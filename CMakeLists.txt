@@ -33,6 +33,8 @@ add_executable(untitled1 main.cpp
         Exec/Logic/GameFunctions/CreateChessBoard.cpp
         Exec/Logic/GameFunctions/LoadChessTileTexturesToWindow.cpp
         Headers/Constants.h
+        Exec/Logic/GameFunctions/LoadChessPeacesTexturesToWindow.cpp
+        Exec/Logic/GameFunctions/CreateChessPeaces.cpp
 
 )
 

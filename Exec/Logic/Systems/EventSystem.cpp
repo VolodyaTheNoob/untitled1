@@ -11,5 +11,4 @@ void EventSystem(Window* Wnd){
             Wnd->GetWindowPtr()->close();
         }
     }
-
 }

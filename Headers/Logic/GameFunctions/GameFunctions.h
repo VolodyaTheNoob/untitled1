@@ -9,6 +9,7 @@
 #include "Headers/Constants.h"
 
 void LoadChessTileTexturesToWindow(Window* WindowPtr);
+void LoadChessPeacesTexturesToWindow(Window* WindowPtr);
 void CreateChessBoard(Window* WindowPtr);
 
 #endif //UNTITLED1_GAMEFUNCTIONS_H
