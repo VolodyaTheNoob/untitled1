@@ -28,6 +28,10 @@ template<class Object>
 Object* EntityManager<Object>::Get(std::string Name){
     return this->Storage[Name];
 }
+template<class Object>
+std::map<std::string,Object*> EntityManager<Object>::GetStorage(){
+    return this->Storage;
+}
 /*
  * Description:
  * One of solution for successful work of this code,

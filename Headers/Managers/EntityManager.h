@@ -30,6 +30,7 @@ public:
     void Add(std::string Name, Object* ToAdd);
     void Delete(std::string Name);
     Object* Get(std::string Name);
+    std::map<std::string,Object*> GetStorage();
 };
 
 

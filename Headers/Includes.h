@@ -15,5 +15,7 @@
 //Game Managers/Systems
 #include "Headers/Managers/TextureManager.h"
 #include "Headers/Managers/EntityManager.h"
+//Will contain all our game stuff
+#include "Headers/GameClasses/Window.h"
 
 #endif //UNTITLED1_INCLUDES_H

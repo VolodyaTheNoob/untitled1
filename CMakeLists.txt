@@ -22,6 +22,10 @@ add_executable(untitled1 main.cpp
         Headers/GameClasses/ChessPeace.h
         Headers/StandartLibraries.h
         Headers/SFML.h
+        Exec/GameClasses/Window.cpp
+        Headers/GameClasses/Window.h
+        Exec/Logic/GameFunctions/Logic.cpp
+        Headers/Logic/Logic.h
 
 )
 
