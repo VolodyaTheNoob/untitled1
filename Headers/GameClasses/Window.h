@@ -17,6 +17,7 @@ private:
     TextureManager *TextureStorage;
     EntityManager<Entity> *Tiles;
     EntityManager<ChessPeace> *Objects;
+    bool ViewFlipped = false;
     void (*RenderSystem)(Window* Wnd);
     void (*EventSystem)(Window* Wnd);
 public:
@@ -30,6 +31,7 @@ public:
     EntityManager<Entity>* GetTileManagerPtr();
     EntityManager<ChessPeace>* GetObjectManagerPtr();
     TextureManager* GetTextureManagerPtr();
+    bool IsViewFlipped();
 };
 
 

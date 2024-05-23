@@ -12,7 +12,6 @@
 class ChessPeace : public Entity{
 
 private:
-    std::vector<uint32_t>MoveMap;
     bool MoveCount;
     sf::Vector2u Coordinates;//(1,1) | (8,8) - like this
     bool Changeable;
@@ -21,7 +20,10 @@ public:
     ChessPeace(bool MoveCount,bool Changeable);
     ~ChessPeace();
     //void Move(std::vector<uint32_t>&ChessMap,sf::Vector2u CoordinatesToMove);
-    void SetCoordinates(sf::Vector2f NewCoordinates);
+    void SetPeaceCoordinates(sf::Vector2f NewCoordinates);
+    void SetBoardCoordinates(sf::Vector2u NewCoordinates);
+    sf::Vector2f GetPeaceCoordinates();
+    sf::Vector2u GetBoardCoordinates();
 };
 
 

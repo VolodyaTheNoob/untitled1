@@ -35,6 +35,7 @@ add_executable(untitled1 main.cpp
         Headers/Constants.h
         Exec/Logic/GameFunctions/LoadChessPeacesTexturesToWindow.cpp
         Exec/Logic/GameFunctions/CreateChessPeaces.cpp
+        Exec/Logic/GameFunctions/CreateVirtualChessMap.cpp
 
 )
 

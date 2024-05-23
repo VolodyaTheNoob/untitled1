@@ -37,4 +37,6 @@ EntityManager<ChessPeace>* Window::GetObjectManagerPtr(){
 TextureManager* Window::GetTextureManagerPtr(){
     return this->TextureStorage;
 }
-
+bool Window::IsViewFlipped(){
+    return this->ViewFlipped;
+}

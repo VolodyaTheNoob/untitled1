@@ -18,6 +18,7 @@ Entity::~Entity() = default;
 //Functions
 void Entity::SetSprite(sf::Sprite *ToSet) {
     this->Sprite->setTexture(*ToSet->getTexture());
+    this->Sprite->setPosition(ToSet->getPosition());
 }
 void Entity::SetName(std::string ToSet) {
     this->Name = ToSet;
