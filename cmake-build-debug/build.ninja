@@ -97,9 +97,33 @@ build CMakeFiles/untitled1.dir/Exec/GameClasses/Window.cpp.obj: CXX_COMPILER__un
   OBJECT_DIR = CMakeFiles\untitled1.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled1.dir\Exec\GameClasses
 
-build CMakeFiles/untitled1.dir/Exec/Logic/GameFunctions/Logic.cpp.obj: CXX_COMPILER__untitled1_unscanned_Debug C$:/Users/SystemX/CLionProjects/untitled1/Exec/Logic/GameFunctions/Logic.cpp || cmake_object_order_depends_target_untitled1
+build CMakeFiles/untitled1.dir/Exec/Logic/Systems/EventSystem.cpp.obj: CXX_COMPILER__untitled1_unscanned_Debug C$:/Users/SystemX/CLionProjects/untitled1/Exec/Logic/Systems/EventSystem.cpp || cmake_object_order_depends_target_untitled1
   DEFINES = -DSFML_STATIC
-  DEP_FILE = CMakeFiles\untitled1.dir\Exec\Logic\GameFunctions\Logic.cpp.obj.d
+  DEP_FILE = CMakeFiles\untitled1.dir\Exec\Logic\Systems\EventSystem.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/SystemX/CLionProjects/untitled1/. -isystem C:/Users/SystemX/Documents/Libraries/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles\untitled1.dir
+  OBJECT_FILE_DIR = CMakeFiles\untitled1.dir\Exec\Logic\Systems
+
+build CMakeFiles/untitled1.dir/Exec/Logic/Systems/RenderSystem.cpp.obj: CXX_COMPILER__untitled1_unscanned_Debug C$:/Users/SystemX/CLionProjects/untitled1/Exec/Logic/Systems/RenderSystem.cpp || cmake_object_order_depends_target_untitled1
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\untitled1.dir\Exec\Logic\Systems\RenderSystem.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/SystemX/CLionProjects/untitled1/. -isystem C:/Users/SystemX/Documents/Libraries/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles\untitled1.dir
+  OBJECT_FILE_DIR = CMakeFiles\untitled1.dir\Exec\Logic\Systems
+
+build CMakeFiles/untitled1.dir/Exec/Logic/GameFunctions/CreateChessBoard.cpp.obj: CXX_COMPILER__untitled1_unscanned_Debug C$:/Users/SystemX/CLionProjects/untitled1/Exec/Logic/GameFunctions/CreateChessBoard.cpp || cmake_object_order_depends_target_untitled1
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\untitled1.dir\Exec\Logic\GameFunctions\CreateChessBoard.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/SystemX/CLionProjects/untitled1/. -isystem C:/Users/SystemX/Documents/Libraries/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles\untitled1.dir
+  OBJECT_FILE_DIR = CMakeFiles\untitled1.dir\Exec\Logic\GameFunctions
+
+build CMakeFiles/untitled1.dir/Exec/Logic/GameFunctions/LoadChessTileTexturesToWindow.cpp.obj: CXX_COMPILER__untitled1_unscanned_Debug C$:/Users/SystemX/CLionProjects/untitled1/Exec/Logic/GameFunctions/LoadChessTileTexturesToWindow.cpp || cmake_object_order_depends_target_untitled1
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\untitled1.dir\Exec\Logic\GameFunctions\LoadChessTileTexturesToWindow.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -IC:/Users/SystemX/CLionProjects/untitled1/. -isystem C:/Users/SystemX/Documents/Libraries/SFML-2.6.1/include
   OBJECT_DIR = CMakeFiles\untitled1.dir
@@ -113,7 +137,7 @@ build CMakeFiles/untitled1.dir/Exec/Logic/GameFunctions/Logic.cpp.obj: CXX_COMPI
 #############################################
 # Link the executable untitled1.exe
 
-build untitled1.exe: CXX_EXECUTABLE_LINKER__untitled1_Debug CMakeFiles/untitled1.dir/main.cpp.obj CMakeFiles/untitled1.dir/Exec/Managers/TextureManager.cpp.obj CMakeFiles/untitled1.dir/Exec/AbstractClasses/Entity.cpp.obj CMakeFiles/untitled1.dir/Exec/Managers/EntityManager.cpp.obj CMakeFiles/untitled1.dir/Exec/GameClasses/ChessPeace.cpp.obj CMakeFiles/untitled1.dir/Exec/GameClasses/Window.cpp.obj CMakeFiles/untitled1.dir/Exec/Logic/GameFunctions/Logic.cpp.obj | C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-system-s-d.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-window-s-d.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-graphics-s-d.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-audio-s-d.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-network-s-d.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-window-s-d.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libfreetype.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libopenal32.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libvorbisfile.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libvorbisenc.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libvorbis.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libogg.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libFLAC.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-system-s-d.a
+build untitled1.exe: CXX_EXECUTABLE_LINKER__untitled1_Debug CMakeFiles/untitled1.dir/main.cpp.obj CMakeFiles/untitled1.dir/Exec/Managers/TextureManager.cpp.obj CMakeFiles/untitled1.dir/Exec/AbstractClasses/Entity.cpp.obj CMakeFiles/untitled1.dir/Exec/Managers/EntityManager.cpp.obj CMakeFiles/untitled1.dir/Exec/GameClasses/ChessPeace.cpp.obj CMakeFiles/untitled1.dir/Exec/GameClasses/Window.cpp.obj CMakeFiles/untitled1.dir/Exec/Logic/Systems/EventSystem.cpp.obj CMakeFiles/untitled1.dir/Exec/Logic/Systems/RenderSystem.cpp.obj CMakeFiles/untitled1.dir/Exec/Logic/GameFunctions/CreateChessBoard.cpp.obj CMakeFiles/untitled1.dir/Exec/Logic/GameFunctions/LoadChessTileTexturesToWindow.cpp.obj | C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-system-s-d.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-window-s-d.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-graphics-s-d.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-audio-s-d.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-network-s-d.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-window-s-d.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libfreetype.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libopenal32.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libvorbisfile.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libvorbisenc.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libvorbis.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libogg.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libFLAC.a C$:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-system-s-d.a
   FLAGS = -g
   LINK_LIBRARIES = C:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-system-s-d.a  C:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-window-s-d.a  C:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-graphics-s-d.a  C:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-audio-s-d.a  C:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-network-s-d.a  C:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-window-s-d.a  -lOpenGL32  -lgdi32  C:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libfreetype.a  C:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libopenal32.a  C:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libvorbisfile.a  C:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libvorbisenc.a  C:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libvorbis.a  C:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libogg.a  C:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libFLAC.a  C:/Users/SystemX/Documents/Libraries/SFML-2.6.1/lib/libsfml-system-s-d.a  -lwinmm  -lws2_32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\untitled1.dir

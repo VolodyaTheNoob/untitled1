@@ -3,13 +3,12 @@
 //
 
 #include "Headers/GameClasses/Window.h"
-
-
 //Constructors
 Window::Window(){
+    this->TextureStorage = new TextureManager();
     this->Tiles = new EntityManager<Entity>();
-    this->Objects = new EntityManager<Entity>();
-    this->Wnd = new sf::RenderWindow(sf::VideoMode(800,600,32),"A");
+    this->Objects = new EntityManager<ChessPeace>();
+    this->Wnd = new sf::RenderWindow(sf::VideoMode(WindowSize.x,WindowSize.y,32),WindowTile);
 }
 //Destructors
 Window::~Window() = default;
@@ -29,10 +28,13 @@ void Window::CallEventSystem(){
 sf::RenderWindow* Window::GetWindowPtr(){
     return this->Wnd;
 }
-EntityManager<Entity>* Window::GetTileManager(){
+EntityManager<Entity>* Window::GetTileManagerPtr(){
     return this->Tiles;
 }
-EntityManager<Entity>* Window::GetObjectManager(){
+EntityManager<ChessPeace>* Window::GetObjectManagerPtr(){
     return this->Objects;
+}
+TextureManager* Window::GetTextureManagerPtr(){
+    return this->TextureStorage;
 }
 

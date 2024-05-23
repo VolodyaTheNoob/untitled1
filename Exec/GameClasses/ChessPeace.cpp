@@ -6,7 +6,8 @@
 
 //Constructors
 ChessPeace::ChessPeace() = default;
-ChessPeace::ChessPeace(bool Changeable){
+ChessPeace::ChessPeace(bool MoveCount,bool Changeable){
+    this->MoveCount = MoveCount;
     this->Changeable = Changeable;
 }
 //Destructors

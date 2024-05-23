@@ -7,13 +7,16 @@
 
 #include "Headers/StandartLibraries.h"
 #include "Headers/SFML.h"
+#include "Headers/Constants.h"
 #include "Headers/Managers/EntityManager.h"
+#include "Headers/Managers/TextureManager.h"
 
 class Window {
 private:
     sf::RenderWindow *Wnd;
+    TextureManager *TextureStorage;
     EntityManager<Entity> *Tiles;
-    EntityManager<Entity> *Objects;
+    EntityManager<ChessPeace> *Objects;
     void (*RenderSystem)(Window* Wnd);
     void (*EventSystem)(Window* Wnd);
 public:
@@ -24,8 +27,9 @@ public:
     void SetEventSystem(void (*NewEventSystem)(Window* Wnd));
     void CallEventSystem();
     sf::RenderWindow* GetWindowPtr();
-    EntityManager<Entity>* GetTileManager();
-    EntityManager<Entity>* GetObjectManager();
+    EntityManager<Entity>* GetTileManagerPtr();
+    EntityManager<ChessPeace>* GetObjectManagerPtr();
+    TextureManager* GetTextureManagerPtr();
 };
 
 

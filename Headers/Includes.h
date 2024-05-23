@@ -10,6 +10,8 @@
 #include "SFML.h"
 //Our Base/Abstract classes
 #include "Abstracts/Entity.h"
+//Constants
+#include "Constants.h"
 //Game classes - based on Base/Abstract classes
 #include "GameClasses/ChessPeace.h"
 //Game Managers/Systems
@@ -17,5 +19,7 @@
 #include "Headers/Managers/EntityManager.h"
 //Will contain all our game stuff
 #include "Headers/GameClasses/Window.h"
+//Will contain all our game functions
+#include "Headers/Logic/Logic.h"
 
 #endif //UNTITLED1_INCLUDES_H

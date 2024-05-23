@@ -24,8 +24,15 @@ add_executable(untitled1 main.cpp
         Headers/SFML.h
         Exec/GameClasses/Window.cpp
         Headers/GameClasses/Window.h
-        Exec/Logic/GameFunctions/Logic.cpp
         Headers/Logic/Logic.h
+        Exec/Logic/Systems/EventSystem.cpp
+        Headers/Logic/Systems/EventSystem.h
+        Exec/Logic/Systems/RenderSystem.cpp
+        Headers/Logic/Systems/RenderSystem.h
+        Headers/Logic/GameFunctions/GameFunctions.h
+        Exec/Logic/GameFunctions/CreateChessBoard.cpp
+        Exec/Logic/GameFunctions/LoadChessTileTexturesToWindow.cpp
+        Headers/Constants.h
 
 )
 
