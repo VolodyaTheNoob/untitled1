@@ -25,18 +25,25 @@ void CreatePeace(Window* WindowPtr,sf::Vector2u Coordinates,std::string PeaceNam
 void CreateChessPeaces(Window* WindowPtr, std::vector<std::vector<uint32_t>> ChessMap, uint32_t x, uint32_t y) {
     std::map<uint32_t, std::string>PeaceMap;
     PeaceMap[0] = " ";
-    PeaceMap[1] = "WhitePawn";
-    PeaceMap[2] = "BlackPawn";
-    PeaceMap[3] = "WhiteRook";
-    PeaceMap[4] = "BlackRook";
-    PeaceMap[5] = "WhiteBishop";
-    PeaceMap[6] = "BlackBishop";
-    PeaceMap[7] = "WhiteKnight";
-    PeaceMap[8] = "BlackKnight";
-    PeaceMap[9] = "WhiteQueen";
-    PeaceMap[10] = "BlackQueen";
-    PeaceMap[11] = "WhiteKing";
-    PeaceMap[12] = "BlackKing";
+    PeaceMap[1] = "BlackPawn";
+    PeaceMap[2] = "WhitePawn";
+    PeaceMap[3] = "BlackRook";
+    PeaceMap[4] = "WhiteRook";
+    PeaceMap[5] = "BlackBishop";
+    PeaceMap[6] = "WhiteBishop";
+    PeaceMap[7] = "BlackKnight";
+    PeaceMap[8] = "WhiteKnight";
+    PeaceMap[9] = "BlackQueen";
+    PeaceMap[10] = "WhiteQueen";
+    PeaceMap[11] = "BlackKing";
+    PeaceMap[12] = "WhiteKing";
+    if(WindowPtr->IsViewFlipped()){
+        for(unsigned int i = 1; i < 12;i+= 2){
+            std::string Temp = PeaceMap[i];
+            PeaceMap[i] = PeaceMap[i+1];
+            PeaceMap[i+1] = Temp;
+        }
+    }
     sf::Vector2u CurrentCoordinates;
     for (CurrentCoordinates.y = 0; CurrentCoordinates.y < y; CurrentCoordinates.y++) {
         for (CurrentCoordinates.x = 0; CurrentCoordinates.x < x; CurrentCoordinates.x++) {

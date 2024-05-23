@@ -61,7 +61,7 @@ void CreateVirtualChessMap(std::vector<std::vector<uint32_t>> &ChessMap){
     ChessMap[7][2] = 6;
     ChessMap[7][3] = 10;
     ChessMap[7][4] = 12;
-    ChessMap[7][5] = 8;
+    ChessMap[7][5] = 6;
     ChessMap[7][6] = 8;
     ChessMap[7][7] = 4;
 }

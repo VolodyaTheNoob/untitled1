@@ -4,8 +4,7 @@ int main() {
     //Creating our game Window
     Window *GameWindow = new Window();
     //Creating VirtualChessMap
-    std::vector<std::vector<uint32_t>>ChessMap(8,std::vector<uint32_t>(8));
-    CreateVirtualChessMap(ChessMap);
+    CreateVirtualChessMap(*GameWindow->GetChessMapPtr());
     //Loading Tiles Textures
     LoadChessTileTexturesToWindow(GameWindow);
     //Loading Peaces Textures
@@ -13,7 +12,7 @@ int main() {
     //Creating ChessBoard(just drawing sprites lol)
     CreateChessBoard(GameWindow);
     //LoadingChessPeaces
-    CreateChessPeaces(GameWindow, ChessMap, ChessBoardSize.x,ChessBoardSize.y);
+    CreateChessPeaces(GameWindow, *GameWindow->GetChessMapPtr(), ChessBoardSize.x,ChessBoardSize.y);
     //Binding RenderSystem
     GameWindow->SetRenderSystem(RenderSystem);
     //Binding EventSystem

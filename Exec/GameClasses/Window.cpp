@@ -5,6 +5,7 @@
 #include "Headers/GameClasses/Window.h"
 //Constructors
 Window::Window(){
+    this->ChessMap = new std::vector<std::vector<uint32_t>>(8,std::vector<uint32_t>(8));
     this->TextureStorage = new TextureManager();
     this->Tiles = new EntityManager<Entity>();
     this->Objects = new EntityManager<ChessPeace>();
@@ -39,4 +40,7 @@ TextureManager* Window::GetTextureManagerPtr(){
 }
 bool Window::IsViewFlipped(){
     return this->ViewFlipped;
+}
+std::vector<std::vector<uint32_t>>* Window::GetChessMapPtr(){
+    return this->ChessMap;
 }
