@@ -15,18 +15,18 @@
 /*
      * ChessMap id's
      * 0 - Empty
-     * 1 - WhitePawn
-     * 2 - BlackPawn
-     * 3 - WhiteTower
-     * 4 - BlackTower
-     * 5 - WhiteBishop
-     * 6 - BlackBishop
-     * 7 - WhiteHorse
-     * 8 - BlackHorse
-     * 9 - WhiteQueen
-     * 10 - BlackQueen
-     * 11 - WhiteKing
-     * 12 - BlackKing
+     * 2 - WhitePawn
+     * 1 - BlackPawn
+     * 4 - WhiteTower
+     * 3 - BlackTower
+     * 6 - WhiteBishop
+     * 5 - BlackBishop
+     * 8 - WhiteHorse
+     * 7 - BlackHorse
+     * 10 - WhiteQueen
+     * 9 - BlackQueen
+     * 12 - WhiteKing
+     * 11 - BlackKing
 */
 
 void FillVirtualChessMapWithZeroes(std::vector<std::vector<uint32_t>> &ChessMap);
