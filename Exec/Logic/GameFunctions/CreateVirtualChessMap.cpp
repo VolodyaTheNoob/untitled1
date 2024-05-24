@@ -50,6 +50,7 @@ void CreateVirtualChessMap(std::vector<std::vector<uint32_t>> &ChessMap){
     ChessMap[0][5] = 5;
     ChessMap[0][6] = 7;
     ChessMap[0][7] = 3;
+
     //BlackPeaces
     //Pawns
     for(unsigned int x = 0; x < 8;x++){
@@ -64,6 +65,7 @@ void CreateVirtualChessMap(std::vector<std::vector<uint32_t>> &ChessMap){
     ChessMap[7][5] = 6;
     ChessMap[7][6] = 8;
     ChessMap[7][7] = 4;
+    ChessMap[4][4] = 10;
 }
 
 void FillVirtualChessMapWithZeroes(std::vector<std::vector<uint32_t>> &ChessMap){
