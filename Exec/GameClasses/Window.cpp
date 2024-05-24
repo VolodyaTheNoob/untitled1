@@ -10,6 +10,7 @@ Window::Window(){
     this->Tiles = new EntityManager<Entity>();
     this->Objects = new EntityManager<ChessPeace>();
     this->Wnd = new sf::RenderWindow(sf::VideoMode(WindowSize.x,WindowSize.y,32),WindowTile);
+    this->CurrentPlayerMove = false;
 }
 //Destructors
 Window::~Window() = default;
@@ -45,10 +46,18 @@ std::vector<std::vector<uint32_t>>* Window::GetChessMapPtr(){
     return this->ChessMap;
 }
 
+void Window::SetChessMap(std::vector<std::vector<uint32_t>> NewChessMap){
+    *this->ChessMap = NewChessMap;
+}
+
 bool Window::GetCurrentPlayerMove(){
     return this->CurrentPlayerMove;
 }
 
 void Window::NextMove(){
-    this->CurrentPlayerMove += 1;
+    if(this->CurrentPlayerMove){
+        this->CurrentPlayerMove = false;
+    }else{
+        this->CurrentPlayerMove = true;
+    }
 }

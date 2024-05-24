@@ -37,6 +37,7 @@ public:
     TextureManager* GetTextureManagerPtr();
     bool IsViewFlipped();
     std::vector<std::vector<uint32_t>>* GetChessMapPtr();
+    void SetChessMap(std::vector<std::vector<uint32_t>> NewChessMap);
     bool GetCurrentPlayerMove();
     void NextMove();
 };
