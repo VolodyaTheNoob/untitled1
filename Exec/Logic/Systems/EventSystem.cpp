@@ -11,6 +11,7 @@ bool IsKnightMoveCorrect(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCo
 bool CheckOneCordMoveCorrect(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCoordinates);
 bool IsQueenMoveCorrect(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCoordinates);
 bool IsAlliePeaceThere(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCoordinates);
+bool IsEnemyPeaceThere(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCoordinates);
 bool IsTileEmpty(Window *Wnd, sf::Vector2u CoordinatesToCheck);
 
 ChessPeace* GetClickedObject(Window* Wnd);
@@ -76,7 +77,7 @@ std::string GetEntityType(ChessPeace *Entity){
     return Temp;
 }
 
-void MoveEntity(Window* Wnd, ChessPeace* Entity, sf::Vector2f PrevPos, std::string EntityType){
+void MoveEntity(Window* Wnd, ChessPeace* Entity, sf::Vector2f PrevPos, std::string EntityType) {
     auto mouse_pos = sf::Mouse::getPosition(*Wnd->GetWindowPtr());
     auto translated_pos = Wnd->GetWindowPtr()->mapPixelToCoords(mouse_pos);
     mouse_pos = sf::Mouse::getPosition(*Wnd->GetWindowPtr());
@@ -86,82 +87,86 @@ void MoveEntity(Window* Wnd, ChessPeace* Entity, sf::Vector2f PrevPos, std::stri
     NewBoardCoordinates.x = int(translated_pos.x) / 64;
     NewBoardCoordinates.y = int(translated_pos.y + 16) / 64;
 
-    std::cout << "<->" << "\n";
-    std::cout << Entity->GetBoardCoordinates().y << " " << Entity->GetBoardCoordinates().x << "\n";
-    std::cout << NewBoardCoordinates.y << " " << NewBoardCoordinates.x << "\n";
-    std::cout << "<->" << "\n";
-        if((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 2 || (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 1){
-            bool IsMoveCorrect = IsPawnMoveCorrect(Wnd, Entity, NewBoardCoordinates);
-            std::cout << IsMoveCorrect << "\n";
-            if(IsTileEmpty(Wnd,NewBoardCoordinates)){
+    if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 2 ||
+        (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 1) {
+        bool IsMoveCorrect = IsPawnMoveCorrect(Wnd, Entity, NewBoardCoordinates);
+        if (IsMoveCorrect) {
+            if (IsTileEmpty(Wnd, NewBoardCoordinates)) {
 
-            }else{
+            } else {
 
             }
         }
-        if((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 4 || (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 3){
-            bool IsMoveCorrect = ChecStraightMoveCorrect(Wnd, Entity, NewBoardCoordinates);
-            if(IsTileEmpty(Wnd,NewBoardCoordinates)){
+    }
+    if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 4 ||
+        (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 3) {
+        bool IsMoveCorrect = ChecStraightMoveCorrect(Wnd, Entity, NewBoardCoordinates);
+        if (IsMoveCorrect) {
+            if (IsTileEmpty(Wnd, NewBoardCoordinates)) {
 
-            }else{
-
-            }
-
-        }
-        if((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 6 || (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 5){
-            bool IsMoveCorrect = CheckCrossMoveCorrect(Wnd, Entity, NewBoardCoordinates);
-            if(IsTileEmpty(Wnd,NewBoardCoordinates)){
-
-            }else{
+            } else {
 
             }
         }
-        if((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 8 || (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 7){
-            bool IsMoveCorrect = IsKnightMoveCorrect(Wnd, Entity, NewBoardCoordinates);
-            if(IsTileEmpty(Wnd,NewBoardCoordinates)){
+    }
+    if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 6 ||
+        (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 5) {
+        bool IsMoveCorrect = CheckCrossMoveCorrect(Wnd, Entity, NewBoardCoordinates);
+        if (IsMoveCorrect) {
+            if (IsTileEmpty(Wnd, NewBoardCoordinates)) {
 
-            }else{
-
-            }
-        }
-        if((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 10 || (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 9){
-            bool IsMoveCorrect = IsQueenMoveCorrect(Wnd, Entity, NewBoardCoordinates);
-            if(IsTileEmpty(Wnd,NewBoardCoordinates)){
-
-            }else{
+            } else {
 
             }
         }
-        if((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 12){
-            bool IsMoveCorrect = CheckOneCordMoveCorrect(Wnd, Entity, NewBoardCoordinates);
-            if(IsTileEmpty(Wnd,NewBoardCoordinates)){
+    }
+    if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 8 ||
+        (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 7) {
+        bool IsMoveCorrect = IsKnightMoveCorrect(Wnd, Entity, NewBoardCoordinates);
+        if (IsMoveCorrect) {
+            if (IsTileEmpty(Wnd, NewBoardCoordinates)) {
 
-            }else{
+            } else {
 
             }
         }
+    }
+    if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 10 ||
+        (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 9) {
+        bool IsMoveCorrect = IsQueenMoveCorrect(Wnd, Entity, NewBoardCoordinates);
+        if (IsMoveCorrect) {
+            if (IsTileEmpty(Wnd, NewBoardCoordinates)) {
 
+            } else {
+
+            }
+        }
+    }
+    if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 12) {
+        bool IsMoveCorrect = CheckOneCordMoveCorrect(Wnd, Entity, NewBoardCoordinates);
+        if (IsMoveCorrect) {
+            if (IsTileEmpty(Wnd, NewBoardCoordinates)) {
+
+            } else {
+
+            }
+        }
+    }
 }
 
 bool IsPawnMoveCorrect(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCoordinates) {
-    int ChangeMoveVec = 1;
-    if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 1) {
-        ChangeMoveVec = -1;
-    }
-    int MoveVec; //0 - Top; 1 - Bottom
-    if (Wnd->IsViewFlipped() == 0) {
-        MoveVec = 1;
-    } else {
-        MoveVec = -1;
-    }
-    MoveVec *= ChangeMoveVec;
-    if (Entity->GetBoardCoordinates().y - NewBoardCoordinates.y == MoveVec) {
-        if (NewBoardCoordinates.x == Entity->GetBoardCoordinates().x) {
-            if ((*Wnd->GetChessMapPtr())[NewBoardCoordinates.y][NewBoardCoordinates.x] != 0) {
-                bool AlliePeaceThere = IsAlliePeaceThere(Wnd, Entity, NewBoardCoordinates);
-                return !AlliePeaceThere;
+    if(abs(int(Entity->GetBoardCoordinates().x) - int(NewBoardCoordinates.x)) < 2){
+        if(abs(int(Entity->GetBoardCoordinates().y) - int(NewBoardCoordinates.y)) == 1){
+            if(abs(int(Entity->GetBoardCoordinates().x) - int(NewBoardCoordinates.x)) == 0){
+                if((*Wnd->GetChessMapPtr())[NewBoardCoordinates.y][NewBoardCoordinates.x] == 0){
+                    return true;
+                }
+            }else{
+                if(abs(int(Entity->GetBoardCoordinates().x) - int(NewBoardCoordinates.x)) == 1){
+                    bool EnemyPeaceThere = IsEnemyPeaceThere(Wnd,Entity,NewBoardCoordinates);
+                    return EnemyPeaceThere;
+                }
             }
-            return true;
         }
     }
     return false;
@@ -199,7 +204,6 @@ bool ChecStraightMoveCorrect(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoa
         sf::Vector2i CheckPos;
         CheckPos.y = Entity->GetBoardCoordinates().y;
         CheckPos.x = Entity->GetBoardCoordinates().x;
-        std::cout << CheckPos.y << " " << CheckPos.x << "\n";
         if(MoveCount > 1) {
             for (unsigned int Move = 0; Move < MoveCount - 1; Move++) {
                 CheckPos.y += MoveVec.y;
@@ -303,6 +307,15 @@ bool IsAlliePeaceThere(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCoor
     int CheckValue = (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] % 2;
     if((*Wnd->GetChessMapPtr())[NewBoardCoordinates.y][NewBoardCoordinates.x] != 0) {
         if (((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] % 2 ==CheckValue) &&((*Wnd->GetChessMapPtr())[NewBoardCoordinates.y][NewBoardCoordinates.x] % 2 == CheckValue)) {
+            return true;
+        }
+    }
+    return false;
+}
+bool IsEnemyPeaceThere(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCoordinates){
+    int CheckValue = (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] % 2;
+    if((*Wnd->GetChessMapPtr())[NewBoardCoordinates.y][NewBoardCoordinates.x] != 0) {
+        if (((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] % 2 ==CheckValue) && ((*Wnd->GetChessMapPtr())[NewBoardCoordinates.y][NewBoardCoordinates.x] % 2 != CheckValue)) {
             return true;
         }
     }
