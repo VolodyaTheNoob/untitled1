@@ -44,3 +44,11 @@ bool Window::IsViewFlipped(){
 std::vector<std::vector<uint32_t>>* Window::GetChessMapPtr(){
     return this->ChessMap;
 }
+
+bool Window::GetCurrentPlayerMove(){
+    return this->CurrentPlayerMove;
+}
+
+void Window::NextMove(){
+    this->CurrentPlayerMove += 1;
+}

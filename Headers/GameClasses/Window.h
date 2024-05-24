@@ -18,10 +18,13 @@ private:
     EntityManager<Entity> *Tiles;
     EntityManager<ChessPeace> *Objects;
     std::vector<std::vector<uint32_t>>*ChessMap;//(8,std::vector<uint32_t>(8))
-    bool ViewFlipped = false;
     void (*RenderSystem)(Window* Wnd);
     void (*EventSystem)(Window* Wnd);
+    bool ViewFlipped = false;
 public:
+    bool CurrentPlayerMove = false;
+    bool PlayerChecked[2] = {false, false};
+    bool IsPLayerCheckmated = false;
     Window();
     ~Window();
     void SetRenderSystem(void (*NewRenderSystem)(Window* Wnd));
@@ -34,6 +37,8 @@ public:
     TextureManager* GetTextureManagerPtr();
     bool IsViewFlipped();
     std::vector<std::vector<uint32_t>>* GetChessMapPtr();
+    bool GetCurrentPlayerMove();
+    void NextMove();
 };
 
 

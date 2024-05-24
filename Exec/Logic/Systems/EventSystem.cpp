@@ -5,7 +5,7 @@
 #include "Headers/Logic/Systems/EventSystem.h"
 
 bool IsPawnMoveCorrect(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCoordinates);
-bool ChecStraightMoveCorrect(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCoordinates);
+bool CheckStraightMoveCorrect(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCoordinates);
 bool CheckCrossMoveCorrect(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCoordinates);
 bool IsKnightMoveCorrect(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCoordinates);
 bool CheckOneCordMoveCorrect(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCoordinates);
@@ -16,6 +16,9 @@ bool IsTileEmpty(Window *Wnd, sf::Vector2u CoordinatesToCheck);
 void Move(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCoordinates);
 void DestroyEntity(Window *Wnd, ChessPeace *Entity, sf::Vector2u EntityCoordinates);
 bool IsKingAttacked(Window *Wnd, ChessPeace *Entity, sf::Vector2u EntityCoordinates);
+bool IsKingChecked(Window* Wnd);
+bool IsTileFreeToMoveKing(Window *Wnd,sf::Vector2u Tile);
+unsigned int CountOfKingAttackers(Window *Wnd,sf::Vector2u Tile);
 
 ChessPeace* GetClickedObject(Window* Wnd);
 void EntityDragAndDrop(Window* Wnd, ChessPeace* ToTrack, sf::Vector2f* TrackedPos);
@@ -90,111 +93,46 @@ void MoveEntity(Window* Wnd, ChessPeace* Entity, sf::Vector2f PrevPos, std::stri
     NewBoardCoordinates.x = int(translated_pos.x) / 64;
     NewBoardCoordinates.y = int(translated_pos.y + 16) / 64;
 
-    if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 2 ||
-        (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 1) {
-        bool IsMoveCorrect = IsPawnMoveCorrect(Wnd, Entity, NewBoardCoordinates);
-        if (IsMoveCorrect) {
-            if (IsTileEmpty(Wnd, NewBoardCoordinates)) {
-                Move(Wnd,Entity,NewBoardCoordinates);
-            } else {
-                if(!IsKingAttacked(Wnd,Entity,NewBoardCoordinates)){
-                    DestroyEntity(Wnd, Entity, NewBoardCoordinates);
-                    Move(Wnd, Entity, NewBoardCoordinates);
-                }else{
-                    Entity->SetPeaceCoordinates(PrevPos);
-                }
-            }
-        }else{
-            Entity->SetPeaceCoordinates(PrevPos);
+    if(IsKingChecked(Wnd)){
+
+    }else {
+        if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 2 ||
+            (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 1) {
+
         }
-    }
-    if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 4 ||
-        (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 3) {
-        bool IsMoveCorrect = ChecStraightMoveCorrect(Wnd, Entity, NewBoardCoordinates);
-        if (IsMoveCorrect) {
-            if (IsTileEmpty(Wnd, NewBoardCoordinates)) {
-                Move(Wnd,Entity,NewBoardCoordinates);
-            } else {
-                if(!IsKingAttacked(Wnd,Entity,NewBoardCoordinates)){
-                    DestroyEntity(Wnd, Entity, NewBoardCoordinates);
-                    Move(Wnd, Entity, NewBoardCoordinates);
-                }else{
-                    Entity->SetPeaceCoordinates(PrevPos);
-                }
-            }
-        }else{
-            Entity->SetPeaceCoordinates(PrevPos);
+
+        if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 4 ||
+            (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 3) {
+
         }
-    }
-    if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 6 ||
-        (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 5) {
-        bool IsMoveCorrect = CheckCrossMoveCorrect(Wnd, Entity, NewBoardCoordinates);
-        if (IsMoveCorrect) {
-            if (IsTileEmpty(Wnd, NewBoardCoordinates)) {
-                Move(Wnd,Entity,NewBoardCoordinates);
-            } else {
-                if(!IsKingAttacked(Wnd,Entity,NewBoardCoordinates)) {
-                    DestroyEntity(Wnd, Entity, NewBoardCoordinates);
-                    Move(Wnd, Entity, NewBoardCoordinates);
-                }else{
-                    Entity->SetPeaceCoordinates(PrevPos);
-                }
-            }
-        }else{
-            Entity->SetPeaceCoordinates(PrevPos);
+
+        if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 6 ||
+            (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 5) {
+
         }
-    }
-    if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 8 ||
-        (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 7) {
-        bool IsMoveCorrect = IsKnightMoveCorrect(Wnd, Entity, NewBoardCoordinates);
-        if (IsMoveCorrect) {
-            if (IsTileEmpty(Wnd, NewBoardCoordinates)) {
-                Move(Wnd,Entity,NewBoardCoordinates);
-            } else {
-                if(!IsKingAttacked(Wnd,Entity,NewBoardCoordinates)) {
-                    DestroyEntity(Wnd, Entity, NewBoardCoordinates);
-                    Move(Wnd, Entity, NewBoardCoordinates);
-                }else{
-                    Entity->SetPeaceCoordinates(PrevPos);
-                }
-            }
-        }else{
-            Entity->SetPeaceCoordinates(PrevPos);
+
+        if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] ==
+            8 ||
+            (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] ==
+            7) {
+
         }
-    }
-    if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 10 ||
-        (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 9) {
-        bool IsMoveCorrect = IsQueenMoveCorrect(Wnd, Entity, NewBoardCoordinates);
-        if (IsMoveCorrect) {
-            if (IsTileEmpty(Wnd, NewBoardCoordinates)) {
-                Move(Wnd,Entity,NewBoardCoordinates);
-            } else {
-                if(!IsKingAttacked(Wnd,Entity,NewBoardCoordinates)) {
-                    DestroyEntity(Wnd, Entity, NewBoardCoordinates);
-                    Move(Wnd, Entity, NewBoardCoordinates);
-                }else{
-                    Entity->SetPeaceCoordinates(PrevPos);
-                }
-            }
-        }else{
-            Entity->SetPeaceCoordinates(PrevPos);
+
+
+        if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] ==
+            10 ||
+            (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] ==
+            9) {
+
         }
-    }
-    if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] == 12) {
-        bool IsMoveCorrect = CheckOneCordMoveCorrect(Wnd, Entity, NewBoardCoordinates);
-        if (IsMoveCorrect) {
-            if (IsTileEmpty(Wnd, NewBoardCoordinates)) {
-                Move(Wnd,Entity,NewBoardCoordinates);
-            } else {
-                if(!IsKingAttacked(Wnd,Entity,NewBoardCoordinates)){
-                    DestroyEntity(Wnd, Entity, NewBoardCoordinates);
-                    Move(Wnd, Entity, NewBoardCoordinates);
-                }else{
-                    Entity->SetPeaceCoordinates(PrevPos);
-                }
-            }
-        }else{
-            Entity->SetPeaceCoordinates(PrevPos);
+
+
+        if ((*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] ==
+            12 ||
+            (*Wnd->GetChessMapPtr())[Entity->GetBoardCoordinates().y][Entity->GetBoardCoordinates().x] ==
+            11) {
+
+
         }
     }
 }
@@ -241,7 +179,7 @@ bool IsPawnMoveCorrect(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCoor
     return false;
 }
 
-bool ChecStraightMoveCorrect(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCoordinates) {
+bool CheckStraightMoveCorrect(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCoordinates) {
     if((Entity->GetBoardCoordinates().y - NewBoardCoordinates.y == 0 || Entity->GetBoardCoordinates().x - NewBoardCoordinates.x == 0) && !(Entity->GetBoardCoordinates().y - NewBoardCoordinates.y == 0 && Entity->GetBoardCoordinates().x - NewBoardCoordinates.x == 0)){
         sf::Vector2i MoveVec(0,0);
         int MoveCount;
@@ -363,7 +301,7 @@ bool CheckOneCordMoveCorrect(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoa
 
 bool IsQueenMoveCorrect(Window *Wnd, ChessPeace *Entity,sf::Vector2u NewBoardCoordinates){
     bool IsOneCordMoveCorrect = CheckOneCordMoveCorrect(Wnd, Entity, NewBoardCoordinates);
-    bool IsStraightMoveCorrect = ChecStraightMoveCorrect(Wnd, Entity, NewBoardCoordinates);
+    bool IsStraightMoveCorrect = CheckStraightMoveCorrect(Wnd, Entity, NewBoardCoordinates);
     bool IsCrossMoveCorrect = CheckCrossMoveCorrect(Wnd, Entity, NewBoardCoordinates);
     if(IsOneCordMoveCorrect == 1 || IsStraightMoveCorrect == 1 || IsCrossMoveCorrect == 1) {
         bool AlliePeaceThere = IsAlliePeaceThere(Wnd,Entity,NewBoardCoordinates);
@@ -422,4 +360,155 @@ bool IsKingAttacked(Window *Wnd, ChessPeace *Entity, sf::Vector2u EntityCoordina
         return true;
     }
     return false;
+}
+
+bool IsKingChecked(Window* Wnd) {
+    bool AttackerSide = Wnd->CurrentPlayerMove - 1;
+    sf::Vector2u OwnKingCoordinates;
+    for (auto &Object: Wnd->GetObjectManagerPtr()->GetStorage()) {
+        if((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] == 12 - Wnd->CurrentPlayerMove){
+            OwnKingCoordinates = Object.second->GetBoardCoordinates();
+        }
+    }
+    for (auto &Object: Wnd->GetObjectManagerPtr()->GetStorage()) {
+        if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] !=
+            0) {
+            if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] %
+                2 == AttackerSide) {
+                if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] ==
+                    2 - AttackerSide) {
+                    if(IsPawnMoveCorrect(Wnd, Object.second, OwnKingCoordinates)){
+                        return IsKingAttacked(Wnd, Object.second, OwnKingCoordinates);
+                    }
+                }
+                if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] ==
+                    4 - AttackerSide) {
+                    if(CheckStraightMoveCorrect(Wnd,Object.second,OwnKingCoordinates)) {
+                        return IsKingAttacked(Wnd, Object.second, OwnKingCoordinates);
+                    }
+                }
+                if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] ==
+                    6 - AttackerSide) {
+                    if(CheckCrossMoveCorrect(Wnd,Object.second,OwnKingCoordinates)){
+                        return IsKingAttacked(Wnd,Object.second,OwnKingCoordinates);
+                    }
+                }
+                if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] ==
+                    8 - AttackerSide) {
+                    if(IsKnightMoveCorrect(Wnd,Object.second,OwnKingCoordinates)) {
+                        return IsKingAttacked(Wnd, Object.second, OwnKingCoordinates);
+                    }
+                }
+                if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] ==
+                    10 - AttackerSide) {
+                    if(IsQueenMoveCorrect(Wnd,Object.second,OwnKingCoordinates)) {
+                        return IsKingAttacked(Wnd, Object.second, OwnKingCoordinates);
+                    }
+                }
+            }
+        }
+    }
+    return false;
+}
+
+bool IsTileFreeToMoveKing(Window *Wnd,sf::Vector2u Tile){
+    bool AttackerSide = Wnd->CurrentPlayerMove - 1;
+    for (auto &Object: Wnd->GetObjectManagerPtr()->GetStorage()) {
+        if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] !=
+            0) {
+            if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] %
+                2 == AttackerSide) {
+                if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] ==
+                    2 - AttackerSide) {
+                    if(IsPawnMoveCorrect(Wnd, Object.second, Tile)){
+                        return IsKingAttacked(Wnd, Object.second, Tile);
+                    }
+                }
+                if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] ==
+                    4 - AttackerSide) {
+                    if(CheckStraightMoveCorrect(Wnd,Object.second,Tile)) {
+                        return IsKingAttacked(Wnd, Object.second, Tile);
+                    }
+                }
+                if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] ==
+                    6 - AttackerSide) {
+                    if(CheckCrossMoveCorrect(Wnd,Object.second,Tile)){
+                        return IsKingAttacked(Wnd,Object.second,Tile);
+                    }
+                }
+                if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] ==
+                    8 - AttackerSide) {
+                    if(IsKnightMoveCorrect(Wnd,Object.second,Tile)) {
+                        return IsKingAttacked(Wnd, Object.second, Tile);
+                    }
+                }
+                if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] ==
+                    10 - AttackerSide) {
+                    if(IsQueenMoveCorrect(Wnd,Object.second,Tile)) {
+                        return IsKingAttacked(Wnd, Object.second, Tile);
+                    }
+                }
+                if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] ==
+                    12 - AttackerSide) {
+                    if(CheckOneCordMoveCorrect(Wnd,Object.second,Tile)) {
+                        return IsKingAttacked(Wnd, Object.second, Tile);
+                    }
+                }
+            }
+        }
+    }
+}
+
+unsigned int CountOfKingAttackers(Window *Wnd,sf::Vector2u Tile){
+    unsigned int Count = 0;
+    bool AttackerSide = Wnd->CurrentPlayerMove - 1;
+    for (auto &Object: Wnd->GetObjectManagerPtr()->GetStorage()) {
+        if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] !=
+            0) {
+            if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] %
+                2 == AttackerSide) {
+                if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] ==
+                    2 - AttackerSide) {
+                    if(IsPawnMoveCorrect(Wnd, Object.second, Tile)){
+                        if(IsKingAttacked(Wnd, Object.second, Tile)){
+                            return Count;
+                        }
+                    }
+                }
+                if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] ==
+                    4 - AttackerSide) {
+                    if(CheckStraightMoveCorrect(Wnd,Object.second,Tile)) {
+                        if(IsKingAttacked(Wnd, Object.second, Tile)){
+                            return Count;
+                        }
+                    }
+                }
+                if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] ==
+                    6 - AttackerSide) {
+                    if(CheckCrossMoveCorrect(Wnd,Object.second,Tile)){
+                        if(IsKingAttacked(Wnd,Object.second,Tile)){
+                            return Count;
+                        }
+                    }
+                }
+                if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] ==
+                    8 - AttackerSide) {
+                    if(IsKnightMoveCorrect(Wnd,Object.second,Tile)) {
+                        if(IsKingAttacked(Wnd, Object.second, Tile)){
+                            return Count;
+                        }
+                    }
+                }
+                if ((*Wnd->GetChessMapPtr())[Object.second->GetBoardCoordinates().y][Object.second->GetBoardCoordinates().x] ==
+                    10 - AttackerSide) {
+                    if(IsQueenMoveCorrect(Wnd,Object.second,Tile)) {
+                        if(IsKingAttacked(Wnd, Object.second, Tile)){
+                            return Count;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return Count;
 }
