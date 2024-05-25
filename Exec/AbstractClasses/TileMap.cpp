@@ -73,3 +73,6 @@ std::string TileMap::GetTileName(sf::Vector2u Coordinates) {
 std::string TileMap::SetTileName(sf::Vector2u Coordinates, std::string NameToSet) {
     (*this->Map)[Coordinates.y][Coordinates.x]->SetName(NameToSet);
 }
+sf::Vector2u TileMap::GetTileSize(){
+    return this->TileSize;
+}

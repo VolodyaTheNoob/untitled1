@@ -6,6 +6,7 @@
 bool IsMouseOnSprite(GameWindow* Wnd,sf::Sprite *Sprite);
 ChessPeace* GetClickedPeace(GameWindow* Wnd);
 void PeaceDragAndDrop(GameWindow* Wnd,ChessPeace* PeaceToMove);
+bool IsPeacePositionChanged(sf::Vector2u CurrentTilePosition,sf::Vector2f CurrentPosition, sf::Vector2u TileSize);
 //Main function
 void EventSystem(GameWindow* Wnd){
     sf::Event event;
@@ -17,6 +18,11 @@ void EventSystem(GameWindow* Wnd){
             ChessPeace* ClickedPeace = GetClickedPeace(Wnd);
             sf::Vector2f PrevCoordinates = ClickedPeace->GetPeaceCoordinates();
             PeaceDragAndDrop(Wnd,ClickedPeace);
+            sf::Vector2u TileSize = Wnd->GetBoardPtr()->GetTileMapPtr()->GetTileSize();
+            bool IsPosChanged = IsPeacePositionChanged(ClickedPeace->GetBoardCoordinates(),ClickedPeace->GetPeaceCoordinates(),TileSize);
+            if(IsPosChanged) {
+
+            }
         }
     }
 }
@@ -52,6 +58,17 @@ bool IsMouseOnSprite(GameWindow* Wnd,sf::Sprite *Sprite){
     sf::FloatRect SpriteBounds = Sprite->getGlobalBounds();
     if (SpriteBounds.contains(MousePos))
     {
+        return true;
+    }
+    return false;
+}
+bool IsPeacePositionChanged(sf::Vector2u CurrentTilePosition,sf::Vector2f CurrentPosition, sf::Vector2u TileSize){
+    sf::Vector2u NewTilePosition;
+    CurrentPosition.x += 20;
+    CurrentPosition.y += 40;
+    NewTilePosition.x = uint32_t(CurrentPosition.x) / TileSize.x;
+    NewTilePosition.y = uint32_t(CurrentPosition.y) / TileSize.y;
+    if(CurrentTilePosition != NewTilePosition){
         return true;
     }
     return false;

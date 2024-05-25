@@ -37,6 +37,7 @@ public:
     void AddTile(Tile* ToAdd);
     void ChangeTile(sf::Vector2u Coordinates, Tile *ToChange);
     void DeleteTile(sf::Vector2u Coordinates);
+    sf::Vector2u GetTileSize();
 };
 
 #endif //UNTITLED1_TILEMAP_H
