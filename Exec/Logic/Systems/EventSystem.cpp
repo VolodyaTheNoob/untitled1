@@ -5,6 +5,7 @@
 #include "Headers/Logic/Systems/EventSystem.h"
 bool IsMouseOnSprite(GameWindow* Wnd,sf::Sprite *Sprite);
 ChessPeace* GetClickedPeace(GameWindow* Wnd);
+void PeaceDragAndDrop(GameWindow* Wnd,ChessPeace* PeaceToMove);
 //Main function
 void EventSystem(GameWindow* Wnd){
     sf::Event event;
@@ -14,8 +15,19 @@ void EventSystem(GameWindow* Wnd){
         }
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
             ChessPeace* ClickedPeace = GetClickedPeace(Wnd);
-            std::cout << ClickedPeace->GetName() << "\n";
+            sf::Vector2f PrevCoordinates = ClickedPeace->GetPeaceCoordinates();
+            PeaceDragAndDrop(Wnd,ClickedPeace);
         }
+    }
+}
+
+void PeaceDragAndDrop(GameWindow* Wnd,ChessPeace* PeaceToMove){
+    while(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+        sf::Vector2f MousePos = Wnd->GetWindowPtr()->mapPixelToCoords(sf::Mouse::getPosition(*Wnd->GetWindowPtr()));
+        MousePos.x -= 20;
+        MousePos.y -= 20;
+        PeaceToMove->SetPeaceCoordinates(MousePos);
+        Wnd->CallRenderSystem();
     }
 }
 
@@ -37,11 +49,7 @@ ChessPeace* GetClickedPeace(GameWindow* Wnd){
 bool IsMouseOnSprite(GameWindow* Wnd,sf::Sprite *Sprite){
     Wnd->GetBoardPtr()->GetPeaceMapPtr()->GetMapPtr();
     sf::Vector2f MousePos = Wnd->GetWindowPtr()->mapPixelToCoords(sf::Mouse::getPosition(*Wnd->GetWindowPtr()));
-
-    // retrieve the bounding box of the sprite
     sf::FloatRect SpriteBounds = Sprite->getGlobalBounds();
-
-    // hit test
     if (SpriteBounds.contains(MousePos))
     {
         return true;
