@@ -17,11 +17,19 @@ PeaceMap::PeaceMap(sf::Vector2u BoardSize){
 PeaceMap::~PeaceMap() = default;
 //Functions
 void PeaceMap::AddPeace(ChessPeace* PeaceToAdd, sf::Vector2u BoardCoordinates){
-    (*this->Map)[BoardCoordinates.y][BoardCoordinates.x] = PeaceToAdd;
+    //std::string Name, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2f SpriteCoordinates
+    (*this->Map)[BoardCoordinates.y][BoardCoordinates.x] = new ChessPeace(PeaceToAdd->GetName(),PeaceToAdd->GetSprite(),PeaceToAdd->GetBoardCoordinates(),PeaceToAdd->GetSprite()->getPosition());
+    (*this->Map)[BoardCoordinates.y][BoardCoordinates.x]->SetTeam(PeaceToAdd->GetTeam());
 }
 void PeaceMap::MovePeace(ChessPeace* PeaceToMove, sf::Vector2u BoardCoordinates){
+    if((*this->Map)[PeaceToMove->GetBoardCoordinates().y][PeaceToMove->GetBoardCoordinates().x] != nullptr){
+        delete (*this->Map)[PeaceToMove->GetBoardCoordinates().y][PeaceToMove->GetBoardCoordinates().x];
+    }
     (*this->Map)[PeaceToMove->GetBoardCoordinates().y][PeaceToMove->GetBoardCoordinates().x] = nullptr;
     (*this->Map)[BoardCoordinates.y][BoardCoordinates.x] = PeaceToMove;
     PeaceToMove->SetBoardCoordinates(BoardCoordinates);
     PeaceToMove->SetCalculatedPeaceCoordinates(BoardCoordinates);
+}
+std::vector<std::vector<ChessPeace*>>* PeaceMap::GetMapPtr(){
+    return this->Map;
 }

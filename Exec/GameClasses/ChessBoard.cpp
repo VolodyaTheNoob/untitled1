@@ -24,3 +24,12 @@ ChessBoard::~ChessBoard() = default;
 void ChessBoard::GameLogic(){
     std::cout << "Playing" << "\n";
 }
+TileMap* ChessBoard::GetTileMapPtr(){
+    return this->Tiles;
+}
+PeaceMap* ChessBoard::GetPeaceMapPtr(){
+    return this->Peaces;
+}
+sf::Vector2u ChessBoard::GetSize(){
+    return this->Size;
+}

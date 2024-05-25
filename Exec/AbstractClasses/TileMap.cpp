@@ -17,7 +17,7 @@ TileMap::~TileMap(){
     --this->CountOfTiles;
 }
 //Functions
-std::vector<std::vector<Tile*>>* TileMap::GetMap(){
+std::vector<std::vector<Tile*>>* TileMap::GetMapPtr(){
     return this->Map;
 }
 sf::Vector2u TileMap::GetSize(){
@@ -50,11 +50,14 @@ void TileMap::SetSize(sf::Vector2u NewSize){
 void TileMap::SetTileSize(sf::Vector2u NewTileSize){
     this->TileSize = NewTileSize;
 }
+
 void TileMap::AddTile(Tile* ToAdd){
     sf::Vector2u CurrentPos;
     CurrentPos.y = this->CountOfTiles / this->Size.y;
     CurrentPos.x = CountOfTiles % Size.x;
-    (*this->Map)[CurrentPos.y][CurrentPos.x] = ToAdd;
+    //std::string Name, sf::Sprite* Sprite,sf::Vector2u Size,sf::Vector2u Coordinates
+    (*this->Map)[CurrentPos.y][CurrentPos.x] = new Tile(ToAdd->GetName(),ToAdd->GetSprite(),ToAdd->GetSize(),ToAdd->GetCoordinates());
+    (*this->Map)[CurrentPos.y][CurrentPos.x]->GetSprite()->setPosition(this->TileSize.x * CurrentPos.x,this->TileSize.y * CurrentPos.y);
     ++this->CountOfTiles;
 }
 void TileMap::ChangeTile(sf::Vector2u Coordinates, Tile *ToChange){

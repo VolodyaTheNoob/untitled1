@@ -39,6 +39,12 @@ sf::Vector2u Tile::GetSize(){
 sf::Vector2u Tile::GetCoordinates(){
     return this->Coordinates;
 }
+sf::Sprite* Tile::GetSprite(){
+    return this->Sprite;
+}
+std::string Tile::GetName(){
+    return this->Name;
+}
 void Tile::SetCoordinates(sf::Vector2u NewCoordinates){
     this->Coordinates = NewCoordinates;
     if(this->GetSprite() != nullptr){

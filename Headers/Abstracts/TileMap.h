@@ -24,7 +24,7 @@ public:
     TileMap();
     TileMap(sf::Vector2u Size, sf::Vector2u TileSize);
     ~TileMap();
-    std::vector<std::vector<Tile*>>* GetMap();
+    std::vector<std::vector<Tile*>>* GetMapPtr();
     sf::Vector2u GetSize();
     Tile* GetTile(sf::Vector2u Coordinates);
     std::string GetTileName(sf::Vector2u Coordinates);

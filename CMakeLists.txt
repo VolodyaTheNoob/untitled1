@@ -31,9 +31,9 @@ add_executable(untitled1 main.cpp
         Headers/Logic/Systems/RenderSystem.h
         Headers/Logic/GameFunctions/GameFunctions.h
         Exec/Logic/GameFunctions/CreateChessBoard.cpp
-        Exec/Logic/GameFunctions/LoadChessTileTexturesToWindow.cpp
+        Exec/Logic/GameFunctions/LoadChessTileTexturesToTextureManager.cpp
         Headers/Constants.h
-        Exec/Logic/GameFunctions/LoadChessPeacesTexturesToWindow.cpp
+        Exec/Logic/GameFunctions/LoadChessPeacesTexturesToTextureManager.cpp
         Exec/Logic/GameFunctions/CreateChessPeaces.cpp
         Exec/Logic/GameFunctions/CreateVirtualChessMap.cpp
         Headers/GameClasses/GameWindow.h
@@ -58,6 +58,7 @@ add_executable(untitled1 main.cpp
         Exec/AbstractClasses/Tile.cpp
         Headers/GameClasses/PeaceMap.h
         Exec/GameClasses/PeaceMap.cpp
+        Headers/GameClasses/Peaces/Peaces.h
 
 )
 

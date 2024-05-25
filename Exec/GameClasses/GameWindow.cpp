@@ -34,3 +34,7 @@ void GameWindow::CallEventSystem(){
         this->EventSystem(this);
     }
 }
+
+ChessBoard* GameWindow::GetBoardPtr(){
+    return this->Board;
+}

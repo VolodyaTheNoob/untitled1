@@ -15,7 +15,7 @@ const std::string WindowTile = "ZXChess";
 const sf::Vector2u WindowSize(512,512);
 //Chess constants
 const sf::Vector2u ChessBoardSize(8,8);
-const sf::Vector2f ChessTileSize(64.f,64.f);
+const sf::Vector2u ChessTileSize(64.f,64.f);
 const sf::Vector2f ChessPeaceSize(32.f,32.f);
 
 

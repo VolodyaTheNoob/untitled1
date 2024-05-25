@@ -3,15 +3,15 @@
 //
 
 #include "Headers/Logic/GameFunctions/GameFunctions.h"
-/*
+
 sf::Texture* CreateWhiteTile();
 sf::Texture* CreateBlackTile();
 
-void LoadChessTileTexturesToWindow(Window* WindowPtr){
+void LoadChessTileTexturesToTextureManager(TextureManager* TextureManagerPtr){
     sf::Texture* WhiteTileTexture = CreateWhiteTile();
     sf::Texture* BlackTileTexture = CreateBlackTile();
-    WindowPtr->GetTextureManagerPtr()->Add("WhiteTile",WhiteTileTexture);
-    WindowPtr->GetTextureManagerPtr()->Add("BlackTile",BlackTileTexture);
+    TextureManagerPtr->Add("WhiteTile",WhiteTileTexture);
+    TextureManagerPtr->Add("BlackTile",BlackTileTexture);
 }
 
 sf::Texture* CreateWhiteTile(){
@@ -28,4 +28,4 @@ sf::Texture* CreateBlackTile(){
     TextureTemp->loadFromImage(ImageTemp);
     return TextureTemp;
 }
-*/
+

@@ -12,6 +12,7 @@
  */
 class Entity{
     friend class Tile;
+    friend class TileMap;
     friend class ChessPeace;
 private:
     sf::Sprite *Sprite = nullptr;
@@ -22,8 +23,8 @@ public:
     ~Entity();
     void SetSprite(sf::Sprite *ToSet);
     void SetName(std::string ToSet);
-    sf::Sprite* GetSprite();
-    std::string GetName();
+    virtual sf::Sprite* GetSprite();
+    virtual std::string GetName();
     Entity& operator=(Entity* ToCopy);
 };
 

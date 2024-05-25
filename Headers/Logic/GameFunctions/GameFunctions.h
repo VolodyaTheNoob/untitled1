@@ -12,13 +12,14 @@
 #include "Headers/Constants.h"
 #include "Headers/GameClasses/ChessPeace.h"
 #include "Headers/GameClasses/PeaceMap.h"
-#include "Headers/GameClasses/GameWindow.h"
+#include "Headers/Abstracts/Tile.h"
+#include "Headers/Abstracts/TileMap.h"
 #include "Headers/GameClasses/ChessBoard.h"
+#include "Headers/GameClasses/GameWindow.h"
 
-void LoadChessTileTexturesToWindow(Window* WindowPtr);
-void LoadChessPeacesTexturesToWindow(Window* WindowPtr);
-void CreateVirtualChessMap(std::vector<std::vector<uint32_t>> &ChessMap);
-void CreateChessBoard(Window* WindowPtr);
-void CreateChessPeaces(Window* WindowPtr, std::vector<std::vector<uint32_t>> ChessMap, uint32_t x, uint32_t y);
+void LoadChessTileTexturesToTextureManager(TextureManager* TextureManagerPtr);
+void LoadChessPeacesTexturesToTextureManager(TextureManager* TextureManagerPtr);
+void CreateChessBoard(TileMap* TileMapPtr, TextureManager *TextureManager);
+void CreateChessPeaces(PeaceMap* PeaceMapPtr, TextureManager* TextureManagerPtr);
 
 #endif //UNTITLED1_GAMEFUNCTIONS_H

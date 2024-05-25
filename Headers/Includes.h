@@ -16,6 +16,7 @@
 #include "Headers/GameClasses/PeaceMap.h"
 #include "Headers/GameClasses/GameWindow.h"
 #include "Headers/GameClasses/ChessBoard.h"
+#include "Headers/GameClasses/Peaces/Peaces.h"
 //Game Managers/Systems
 #include "Headers/Managers/TextureManager.h"
 #include "Headers/Managers/EntityManager.h"

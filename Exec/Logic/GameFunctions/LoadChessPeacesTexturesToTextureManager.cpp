@@ -5,145 +5,131 @@
 #include "Headers/Logic/GameFunctions/GameFunctions.h"
 
 //C:/Users/SystemX/CLionProjects/untitled1/Sprites
-/*
-void LoadPawns(Window* WindowPtr);
-void LoadWhitePawn(Window* WindowPtr);void LoadBlackPawn(Window* WindowPtr);
 
-void LoadRooks(Window* WindowPtr);
-void LoadWhiteRook(Window* WindowPtr);void LoadBlackRook(Window* WindowPtr);
+void LoadPawns(TextureManager* TextureManagerPtr);
+void LoadWhitePawn(TextureManager* TextureManagerPtr);void LoadBlackPawn(TextureManager* TextureManagerPtr);
 
-void LoadBishops(Window* WindowPtr);
-void LoadWhiteBishop(Window* WindowPtr);void LoadBlackBishop(Window* WindowPtr);
+void LoadRooks(TextureManager* TextureManagerPtr);
+void LoadWhiteRook(TextureManager* TextureManagerPtr);void LoadBlackRook(TextureManager* TextureManagerPtr);
 
-void LoadKnights(Window* WindowPtr);
-void LoadWhiteKnight(Window* WindowPtr);void LoadBlackKnight(Window* WindowPtr);
+void LoadBishops(TextureManager* TextureManagerPtr);
+void LoadWhiteBishop(TextureManager* TextureManagerPtr);void LoadBlackBishop(TextureManager* TextureManagerPtr);
 
-void LoadQueens(Window* WindowPtr);
-void LoadWhiteQueen(Window* WindowPtr);void LoadBlackQueen(Window* WindowPtr);
+void LoadKnights(TextureManager* TextureManagerPtr);
+void LoadWhiteKnight(TextureManager* TextureManagerPtr);void LoadBlackKnight(TextureManager* TextureManagerPtr);
 
-void LoadKings(Window* WindowPtr);
-void LoadWhiteKing(Window* WindowPtr);void LoadBlackKing(Window* WindowPtr);
+void LoadQueens(TextureManager* TextureManagerPtr);
+void LoadWhiteQueen(TextureManager* TextureManagerPtr);void LoadBlackQueen(TextureManager* TextureManagerPtr);
+
+void LoadKings(TextureManager* TextureManagerPtr);
+void LoadWhiteKing(TextureManager* TextureManagerPtr);void LoadBlackKing(TextureManager* TextureManagerPtr);
 /*
  *   |
  *   |   MAIN FUNCTION
  *  \ /
  */
-/*
-void LoadChessPeacesTexturesToWindow(Window* WindowPtr){
-    LoadPawns(WindowPtr);
-    LoadRooks(WindowPtr);
-    LoadBishops(WindowPtr);
-    LoadKnights(WindowPtr);
-    LoadQueens(WindowPtr);
-    LoadKings(WindowPtr);
+
+void LoadChessPeacesTexturesToTextureManager(TextureManager* TextureManagerPtr){
+    LoadPawns(TextureManagerPtr);
+    LoadRooks(TextureManagerPtr);
+    LoadBishops(TextureManagerPtr);
+    LoadKnights(TextureManagerPtr);
+    LoadQueens(TextureManagerPtr);
+    LoadKings(TextureManagerPtr);
     }
-*/
+
 /*
  * / \
  *  |   MAIN FUNCTION
  *  |
  */
 //Loading Pawns
-/*
-void LoadPawns(Window* WindowPtr){
-    LoadWhitePawn(WindowPtr);
-    LoadBlackPawn(WindowPtr);
+void LoadPawns(TextureManager* TextureManagerPtr){
+    LoadWhitePawn(TextureManagerPtr);
+    LoadBlackPawn(TextureManagerPtr);
 }
-void LoadWhitePawn(Window* WindowPtr){
-    TextureManager* TextureManagerPtr = WindowPtr->GetTextureManagerPtr();
+void LoadWhitePawn(TextureManager* TextureManagerPtr){
     sf::Texture *WhitePawnTexture = new sf::Texture();
     WhitePawnTexture->loadFromFile("C:/Users/SystemX/CLionProjects/untitled1/Sprites/pawn.png");
     TextureManagerPtr->Add("WhitePawn",WhitePawnTexture);
 }
-void LoadBlackPawn(Window* WindowPtr){
-    TextureManager* TextureManagerPtr = WindowPtr->GetTextureManagerPtr();
+void LoadBlackPawn(TextureManager* TextureManagerPtr){
     sf::Texture *WhitePawnTexture = new sf::Texture();
     WhitePawnTexture->loadFromFile("C:/Users/SystemX/CLionProjects/untitled1/Sprites/pawn1.png");
     TextureManagerPtr->Add("BlackPawn",WhitePawnTexture);
 }
 //Loading Rooks
-void LoadRooks(Window* WindowPtr){
-    LoadWhiteRook(WindowPtr);
-    LoadBlackRook(WindowPtr);
+void LoadRooks(TextureManager* TextureManagerPtr){
+    LoadWhiteRook(TextureManagerPtr);
+    LoadBlackRook(TextureManagerPtr);
 }
-void LoadWhiteRook(Window* WindowPtr){
-    TextureManager* TextureManagerPtr = WindowPtr->GetTextureManagerPtr();
+void LoadWhiteRook(TextureManager* TextureManagerPtr){
     sf::Texture *WhitePawnTexture = new sf::Texture();
     WhitePawnTexture->loadFromFile("C:/Users/SystemX/CLionProjects/untitled1/Sprites/rook.png");
     TextureManagerPtr->Add("WhiteRook",WhitePawnTexture);
 }
-void LoadBlackRook(Window* WindowPtr){
-    TextureManager* TextureManagerPtr = WindowPtr->GetTextureManagerPtr();
+void LoadBlackRook(TextureManager* TextureManagerPtr){
     sf::Texture *WhitePawnTexture = new sf::Texture();
     WhitePawnTexture->loadFromFile("C:/Users/SystemX/CLionProjects/untitled1/Sprites/rook1.png");
     TextureManagerPtr->Add("BlackRook",WhitePawnTexture);
 }
 //Loading Bishops
-void LoadBishops(Window* WindowPtr){
-    LoadWhiteBishop(WindowPtr);
-    LoadBlackBishop(WindowPtr);
+void LoadBishops(TextureManager* TextureManagerPtr){
+    LoadWhiteBishop(TextureManagerPtr);
+    LoadBlackBishop(TextureManagerPtr);
 }
-void LoadWhiteBishop(Window* WindowPtr){
-    TextureManager* TextureManagerPtr = WindowPtr->GetTextureManagerPtr();
+void LoadWhiteBishop(TextureManager* TextureManagerPtr){
     sf::Texture *WhitePawnTexture = new sf::Texture();
     WhitePawnTexture->loadFromFile("C:/Users/SystemX/CLionProjects/untitled1/Sprites/bishop.png");
     TextureManagerPtr->Add("WhiteBishop",WhitePawnTexture);
 }
-void LoadBlackBishop(Window* WindowPtr){
-    TextureManager* TextureManagerPtr = WindowPtr->GetTextureManagerPtr();
+void LoadBlackBishop(TextureManager* TextureManagerPtr){
     sf::Texture *WhitePawnTexture = new sf::Texture();
     WhitePawnTexture->loadFromFile("C:/Users/SystemX/CLionProjects/untitled1/Sprites/bishop1.png");
     TextureManagerPtr->Add("BlackBishop",WhitePawnTexture);
 }
 //Loading Knights
-void LoadKnights(Window* WindowPtr){
-    LoadWhiteKnight(WindowPtr);
-    LoadBlackKnight(WindowPtr);
+void LoadKnights(TextureManager* TextureManagerPtr){
+    LoadWhiteKnight(TextureManagerPtr);
+    LoadBlackKnight(TextureManagerPtr);
 }
-void LoadWhiteKnight(Window* WindowPtr){
-    TextureManager* TextureManagerPtr = WindowPtr->GetTextureManagerPtr();
+void LoadWhiteKnight(TextureManager* TextureManagerPtr){
     sf::Texture *WhitePawnTexture = new sf::Texture();
     WhitePawnTexture->loadFromFile("C:/Users/SystemX/CLionProjects/untitled1/Sprites/knight.png");
     TextureManagerPtr->Add("WhiteKnight",WhitePawnTexture);
 }
-void LoadBlackKnight(Window* WindowPtr){
-    TextureManager* TextureManagerPtr = WindowPtr->GetTextureManagerPtr();
+void LoadBlackKnight(TextureManager* TextureManagerPtr){
     sf::Texture *WhitePawnTexture = new sf::Texture();
     WhitePawnTexture->loadFromFile("C:/Users/SystemX/CLionProjects/untitled1/Sprites/knight1.png");
     TextureManagerPtr->Add("BlackKnight",WhitePawnTexture);
 }
 //Loading Queens
-void LoadQueens(Window* WindowPtr){
-    LoadWhiteQueen(WindowPtr);
-    LoadBlackQueen(WindowPtr);
+void LoadQueens(TextureManager* TextureManagerPtr){
+    LoadWhiteQueen(TextureManagerPtr);
+    LoadBlackQueen(TextureManagerPtr);
 }
-void LoadWhiteQueen(Window* WindowPtr){
-    TextureManager* TextureManagerPtr = WindowPtr->GetTextureManagerPtr();
+void LoadWhiteQueen(TextureManager* TextureManagerPtr){
     sf::Texture *WhitePawnTexture = new sf::Texture();
     WhitePawnTexture->loadFromFile("C:/Users/SystemX/CLionProjects/untitled1/Sprites/queen.png");
     TextureManagerPtr->Add("WhiteQueen",WhitePawnTexture);
 }
-void LoadBlackQueen(Window* WindowPtr){
-    TextureManager* TextureManagerPtr = WindowPtr->GetTextureManagerPtr();
+void LoadBlackQueen(TextureManager* TextureManagerPtr){
     sf::Texture *WhitePawnTexture = new sf::Texture();
     WhitePawnTexture->loadFromFile("C:/Users/SystemX/CLionProjects/untitled1/Sprites/queen1.png");
     TextureManagerPtr->Add("BlackQueen",WhitePawnTexture);
 }
 //Loading Kings
-void LoadKings(Window* WindowPtr){
-    LoadWhiteKing(WindowPtr);
-    LoadBlackKing(WindowPtr);
+void LoadKings(TextureManager* TextureManagerPtr){
+    LoadWhiteKing(TextureManagerPtr);
+    LoadBlackKing(TextureManagerPtr);
 }
-void LoadWhiteKing(Window* WindowPtr){
-    TextureManager* TextureManagerPtr = WindowPtr->GetTextureManagerPtr();
+void LoadWhiteKing(TextureManager* TextureManagerPtr){
     sf::Texture *WhitePawnTexture = new sf::Texture();
     WhitePawnTexture->loadFromFile("C:/Users/SystemX/CLionProjects/untitled1/Sprites/king.png");
     TextureManagerPtr->Add("WhiteKing",WhitePawnTexture);
 }
-void LoadBlackKing(Window* WindowPtr){
-    TextureManager* TextureManagerPtr = WindowPtr->GetTextureManagerPtr();
+void LoadBlackKing(TextureManager* TextureManagerPtr){
     sf::Texture *WhitePawnTexture = new sf::Texture();
     WhitePawnTexture->loadFromFile("C:/Users/SystemX/CLionProjects/untitled1/Sprites/king1.png");
     TextureManagerPtr->Add("BlackKing",WhitePawnTexture);
 }
-*/

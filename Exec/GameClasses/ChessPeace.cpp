@@ -31,6 +31,13 @@ ChessPeace::ChessPeace(std::string Name, sf::Sprite* Sprite ,sf::Vector2u Coordi
     this->Coordinates = Coordinates;
     this->SetCalculatedPeaceCoordinates(BoardSize);
 }
+ChessPeace::ChessPeace(std::string Name, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2f SpriteCoordinates) {
+    this->SetTeam("Unknown");
+    this->SetName(Name);
+    this->SetSprite(Sprite);
+    this->Coordinates = Coordinates;
+    this->Sprite->setPosition(SpriteCoordinates);
+}
 //Destructors
 ChessPeace::~ChessPeace() = default;
 //Functions
@@ -58,6 +65,9 @@ void ChessPeace::Destroy(){
 }
 std::string ChessPeace::GetType(){
     return this->Type;
+}
+void ChessPeace::SetType(std::string NewType){
+    this->Type = NewType;
 }
 std::string ChessPeace::GetTeam() {
     return this->Team;

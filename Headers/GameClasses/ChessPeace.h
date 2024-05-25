@@ -19,23 +19,25 @@ private:
     static inline std::string Type = "Unknown";
     std::string Team = "Unknown";
     sf::Vector2u Coordinates;//(1,1) | (8,8) - like this
-    void SetPeaceCoordinates(sf::Vector2f NewCoordinates);
-    sf::Vector2f GetPeaceCoordinates();
-    void SetTeam(std::string NewTeam);
 public:
     ChessPeace();
     explicit ChessPeace(sf::Vector2u Coordinates);
     ChessPeace(sf::Vector2u Coordinates, sf::Vector2u BoardSize);
     ChessPeace(std::string Name, sf::Sprite* Sprite ,sf::Vector2u Coordinates);
     ChessPeace(std::string Name, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2u BoardSize);
+    ChessPeace(std::string Name, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2f SpriteCoordinates);
     ~ChessPeace();
     virtual void Move(sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove);
     virtual void Destroy();
     std::string GetType();
+    void SetType(std::string NewType);
     std::string GetTeam();
     sf::Vector2u GetBoardCoordinates();
     void SetCalculatedPeaceCoordinates(sf::Vector2u BoardSize);
     void SetBoardCoordinates(sf::Vector2u NewCoordinates);
+    void SetPeaceCoordinates(sf::Vector2f NewCoordinates);
+    sf::Vector2f GetPeaceCoordinates();
+    void SetTeam(std::string NewTeam);
 };
 
 

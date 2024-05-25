@@ -24,6 +24,7 @@ public:
     void SetEventSystem(void (*NewEventSystem)(GameWindow* Wnd));
     void CallRenderSystem() override;
     void CallEventSystem() override;
+    ChessBoard* GetBoardPtr();
 };
 
 

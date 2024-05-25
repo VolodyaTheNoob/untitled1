@@ -26,6 +26,9 @@ public:
     ChessBoard(bool IsFlipped,std::string CurrentPlayerMove, TileMap* TileMapPtr, PeaceMap* PeaceMapPtr, sf::Vector2u BoardSize);
     ~ChessBoard();
     void GameLogic();
+    TileMap* GetTileMapPtr();
+    PeaceMap* GetPeaceMapPtr();
+    sf::Vector2u GetSize();
 };
 
 #endif //UNTITLED1_CHESSBOARD_H

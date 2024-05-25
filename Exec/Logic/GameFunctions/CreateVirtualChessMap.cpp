@@ -3,6 +3,12 @@
 //
 #include "Headers/Logic/GameFunctions/GameFunctions.h"
 /*
+ * ATTENTION ATTENTION ATTENTION ATTENTION ATTENTION
+ *
+ * Artefact - this function not used anymore
+ *
+ * ATTENTION ATTENTION ATTENTION ATTENTION ATTENTION
+/*
             3,7,5,9,11,5,7,3,
             1,1,1,1,1,1,1,1,
             0,0,0,0,0,0,0,0,

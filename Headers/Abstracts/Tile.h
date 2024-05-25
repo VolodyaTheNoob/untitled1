@@ -24,6 +24,8 @@ public:
     ~Tile();
     sf::Vector2u GetSize();
     sf::Vector2u GetCoordinates();
+    sf::Sprite* GetSprite() override;
+    std::string GetName() override;
     void SetCoordinates(sf::Vector2u NewCoordinates);
     void SetSize(sf::Vector2u NewSize);
     uint32_t GetID();
