@@ -10,13 +10,12 @@
 #include "Headers/Constants.h"
 #include "Headers/Managers/EntityManager.h"
 #include "Headers/Managers/TextureManager.h"
-
+/*
+ * Abstract class used to build own Window classes
+ */
 class Window {
 private:
     sf::RenderWindow *Wnd;
-    TextureManager *TextureStorage;
-    EntityManager<Entity> *Tiles;
-    EntityManager<ChessPeace> *Objects;
     void (*RenderSystem)(Window* Wnd);
     void (*EventSystem)(Window* Wnd);
 public:
@@ -27,9 +26,7 @@ public:
     void SetEventSystem(void (*NewEventSystem)(Window* Wnd));
     void CallEventSystem();
     sf::RenderWindow* GetWindowPtr();
-    EntityManager<Entity>* GetTileManagerPtr();
-    EntityManager<ChessPeace>* GetObjectManagerPtr();
-    TextureManager* GetTextureManagerPtr();
+    void SetWindowPtr(sf::RenderWindow* NewWindowPtr);
 };
 
 

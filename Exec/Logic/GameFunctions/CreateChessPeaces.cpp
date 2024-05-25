@@ -4,6 +4,7 @@
 
 #include "Headers/Logic/GameFunctions/GameFunctions.h"
 /*
+
  * ChessMap id's
  * 0 - Empty
  * 1 - WhitePawn
@@ -19,6 +20,7 @@
  * 11 - WhiteKing
  * 12 - BlackKing
  */
+/*
 void CreatePeace(Window* WindowPtr,sf::Vector2u Coordinates,std::string PeaceName);
 
 //MainFunctions
@@ -59,3 +61,4 @@ void CreatePeace(Window* WindowPtr,sf::Vector2u Coordinates,std::string PeaceNam
     Peace->SetBoardCoordinates(Coordinates);
     WindowPtr->GetObjectManagerPtr()->Add(PeaceName + " " + std::to_string(Coordinates.x) + " " + std::to_string(Coordinates.y),Peace);
 }
+*/

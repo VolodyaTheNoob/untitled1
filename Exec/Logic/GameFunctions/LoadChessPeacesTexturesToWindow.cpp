@@ -5,7 +5,7 @@
 #include "Headers/Logic/GameFunctions/GameFunctions.h"
 
 //C:/Users/SystemX/CLionProjects/untitled1/Sprites
-
+/*
 void LoadPawns(Window* WindowPtr);
 void LoadWhitePawn(Window* WindowPtr);void LoadBlackPawn(Window* WindowPtr);
 
@@ -28,6 +28,7 @@ void LoadWhiteKing(Window* WindowPtr);void LoadBlackKing(Window* WindowPtr);
  *   |   MAIN FUNCTION
  *  \ /
  */
+/*
 void LoadChessPeacesTexturesToWindow(Window* WindowPtr){
     LoadPawns(WindowPtr);
     LoadRooks(WindowPtr);
@@ -35,13 +36,15 @@ void LoadChessPeacesTexturesToWindow(Window* WindowPtr){
     LoadKnights(WindowPtr);
     LoadQueens(WindowPtr);
     LoadKings(WindowPtr);
-}
+    }
+*/
 /*
  * / \
  *  |   MAIN FUNCTION
  *  |
  */
 //Loading Pawns
+/*
 void LoadPawns(Window* WindowPtr){
     LoadWhitePawn(WindowPtr);
     LoadBlackPawn(WindowPtr);
@@ -143,3 +146,4 @@ void LoadBlackKing(Window* WindowPtr){
     WhitePawnTexture->loadFromFile("C:/Users/SystemX/CLionProjects/untitled1/Sprites/king1.png");
     TextureManagerPtr->Add("BlackKing",WhitePawnTexture);
 }
+*/

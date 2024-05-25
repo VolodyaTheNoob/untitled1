@@ -3,7 +3,7 @@
 //
 
 #include "Headers/Logic/GameFunctions/GameFunctions.h"
-
+/*
 void CreateChessBoard(Window* WindowPtr){
     EntityManager<Entity>* TileManagerPtr = WindowPtr->GetTileManagerPtr();
     sf::Sprite *WhiteTileSprite = new sf::Sprite;
@@ -29,3 +29,4 @@ void CreateChessBoard(Window* WindowPtr){
         }
     }
 }
+*/

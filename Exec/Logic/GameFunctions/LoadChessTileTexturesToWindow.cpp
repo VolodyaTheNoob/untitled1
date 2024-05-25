@@ -3,7 +3,7 @@
 //
 
 #include "Headers/Logic/GameFunctions/GameFunctions.h"
-
+/*
 sf::Texture* CreateWhiteTile();
 sf::Texture* CreateBlackTile();
 
@@ -28,4 +28,4 @@ sf::Texture* CreateBlackTile(){
     TextureTemp->loadFromImage(ImageTemp);
     return TextureTemp;
 }
-
+*/

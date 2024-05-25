@@ -11,4 +11,7 @@
 
 
 
+/*
+ * There we link our game functions to main.cpp
+ */
 #endif //UNTITLED1_LOGIC_H

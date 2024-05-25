@@ -18,8 +18,7 @@
 #include "Headers/Managers/TextureManager.h"
 #include "Headers/Managers/EntityManager.h"
 //Will contain all our game stuff
-#include "Headers/GameClasses/Window.h"
+#include "Headers/Abstracts/Window.h"
 //Will contain all our game functions
-#include "Headers/Logic/Logic.h"
 
 #endif //UNTITLED1_INCLUDES_H

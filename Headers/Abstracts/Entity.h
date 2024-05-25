@@ -7,10 +7,14 @@
 
 #include "Headers/StandartLibraries.h"
 #include "Headers/SFML.h"
-
+/*
+ * Abstract class used to build own Entity/Object classes
+ */
 class Entity{
+    friend class Tile;
+    friend class ChessPeace;
 private:
-    sf::Sprite *Sprite;
+    sf::Sprite *Sprite = nullptr;
     std::string Name;
 public:
     Entity();

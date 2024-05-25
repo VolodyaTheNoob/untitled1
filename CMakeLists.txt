@@ -23,7 +23,7 @@ add_executable(untitled1 main.cpp
         Headers/StandartLibraries.h
         Headers/SFML.h
         Exec/AbstractClasses/Window.cpp
-        Headers/GameClasses/Window.h
+        Headers/Abstracts/Window.h
         Headers/Logic/Logic.h
         Exec/Logic/Systems/EventSystem.cpp
         Headers/Logic/Systems/EventSystem.h
@@ -36,6 +36,28 @@ add_executable(untitled1 main.cpp
         Exec/Logic/GameFunctions/LoadChessPeacesTexturesToWindow.cpp
         Exec/Logic/GameFunctions/CreateChessPeaces.cpp
         Exec/Logic/GameFunctions/CreateVirtualChessMap.cpp
+        Headers/GameClasses/GameWindow.h
+        Headers/Abstracts/TileMap.h
+        Headers/GameClasses/Peaces/Pawn.h
+        Headers/GameClasses/Peaces/Rook.h
+        Headers/GameClasses/Peaces/Knight.h
+        Headers/GameClasses/Peaces/Bishop.h
+        Headers/GameClasses/Peaces/King.h
+        Headers/GameClasses/Peaces/Queen.h
+        Headers/GameClasses/ChessBoard.h
+        Exec/AbstractClasses/TileMap.cpp
+        Exec/GameClasses/ChessBoard.cpp
+        Exec/GameClasses/GameWindow.cpp
+        Exec/GameClasses/Peaces/Pawn.cpp
+        Exec/GameClasses/Peaces/Rook.cpp
+        Exec/GameClasses/Peaces/Knight.cpp
+        Exec/GameClasses/Peaces/Bishop.cpp
+        Exec/GameClasses/Peaces/King.cpp
+        Exec/GameClasses/Peaces/Queen.cpp
+        Headers/Abstracts/Tile.h
+        Exec/AbstractClasses/Tile.cpp
+        Headers/GameClasses/PeaceMap.h
+        Exec/GameClasses/PeaceMap.cpp
 
 )
 

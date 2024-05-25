@@ -4,8 +4,10 @@
 
 #ifndef UNTITLED1_GAMEFUNCTIONS_H
 #define UNTITLED1_GAMEFUNCTIONS_H
-
-#include "Headers/GameClasses/Window.h"
+/*
+ * Game functions there - we use them in Event/Render system
+ */
+#include "Headers/Abstracts/Window.h"
 #include "Headers/Constants.h"
 
 void LoadChessTileTexturesToWindow(Window* WindowPtr);
