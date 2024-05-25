@@ -21,7 +21,12 @@ void EventSystem(GameWindow* Wnd){
             sf::Vector2u TileSize = Wnd->GetBoardPtr()->GetTileMapPtr()->GetTileSize();
             bool IsPosChanged = IsPeacePositionChanged(ClickedPeace->GetBoardCoordinates(),ClickedPeace->GetPeaceCoordinates(),TileSize);
             if(IsPosChanged) {
-
+                sf::Vector2f CurrentSpritePosition = ClickedPeace->GetPeaceCoordinates();
+                sf::Vector2u NewTilePosition;CurrentSpritePosition.x += 20;CurrentSpritePosition.y += 40;
+                NewTilePosition.x = uint32_t(CurrentSpritePosition.x) / TileSize.x;NewTilePosition.y = uint32_t(CurrentSpritePosition.y) / TileSize.y;
+                if(!Wnd->GetBoardPtr()->IsPlayerMoveCorrect(ClickedPeace,NewTilePosition)){
+                    ClickedPeace->SetPeaceCoordinates(PrevCoordinates);
+                }
             }
         }
     }

@@ -21,8 +21,9 @@ ChessBoard::ChessBoard(bool IsFlipped,std::string CurrentPlayerMove, TileMap* Ti
 //Destructors
 ChessBoard::~ChessBoard() = default;
 //Functions
-void ChessBoard::GameLogic(){
-    std::cout << "Playing" << "\n";
+bool ChessBoard::IsPlayerMoveCorrect(ChessPeace* MovedPeace, sf::Vector2u NewPeacePosition){
+    std::cout << "Move" << "\n";
+    return true;
 }
 TileMap* ChessBoard::GetTileMapPtr(){
     return this->Tiles;

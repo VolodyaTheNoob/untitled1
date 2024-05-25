@@ -13,6 +13,7 @@
 
 class Window;
 class PeaceMap;
+class ChessPeace;
 
 class ChessBoard{
 private:
@@ -25,7 +26,7 @@ public:
     ChessBoard();
     ChessBoard(bool IsFlipped,std::string CurrentPlayerMove, TileMap* TileMapPtr, PeaceMap* PeaceMapPtr, sf::Vector2u BoardSize);
     ~ChessBoard();
-    void GameLogic();
+    bool IsPlayerMoveCorrect(ChessPeace* MovedPeace, sf::Vector2u NewPeacePosition);
     TileMap* GetTileMapPtr();
     PeaceMap* GetPeaceMapPtr();
     sf::Vector2u GetSize();
