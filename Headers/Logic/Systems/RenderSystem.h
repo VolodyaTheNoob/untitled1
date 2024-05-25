@@ -5,7 +5,7 @@
 #ifndef UNTITLED1_RENDERSYSTEM_H
 #define UNTITLED1_RENDERSYSTEM_H
 
-#include "Headers/GameClasses/ChessPeace.h"
+#include "Headers/GameClasses/Peaces/ChessPeace.h"
 #include "Headers/GameClasses/PeaceMap.h"
 #include "Headers/GameClasses/GameWindow.h"
 #include "Headers/GameClasses/ChessBoard.h"

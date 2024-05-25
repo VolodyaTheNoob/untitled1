@@ -21,11 +21,11 @@ public:
     Entity();
     Entity(std::string Name, sf::Sprite* Sprite);
     ~Entity();
-    void SetSprite(sf::Sprite *ToSet);
-    void SetName(std::string ToSet);
+    virtual void SetSprite(sf::Sprite *ToSet);
+    virtual void SetName(std::string ToSet);
     virtual sf::Sprite* GetSprite();
     virtual std::string GetName();
-    Entity& operator=(Entity* ToCopy);
+    //Entity& operator=(Entity* ToCopy);
 };
 
 

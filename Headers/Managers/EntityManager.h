@@ -8,7 +8,7 @@
 #include "Headers/StandartLibraries.h"
 #include "Headers/SFML.h"
 #include "Headers/Abstracts/Entity.h"
-#include "Headers/GameClasses/ChessPeace.h"
+#include "Headers/GameClasses/Peaces/ChessPeace.h"
 
 /*
  * Container for game Entities - uses C++ Templates - to simplify code,

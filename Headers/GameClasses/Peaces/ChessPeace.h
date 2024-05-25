@@ -9,7 +9,7 @@
 #include "Headers/SFML.h"
 #include "Headers/Abstracts/Entity.h"
 #include "Headers/GameClasses/ChessBoard.h"
-#include "Headers/GameClasses/PeaceMap.h"
+
 /*
  * Abstract class for game used to build ChessPeaces
  */
@@ -21,12 +21,8 @@ private:
     sf::Vector2u Coordinates;//(1,1) | (8,8) - like this
 public:
     ChessPeace();
-    explicit ChessPeace(sf::Vector2u Coordinates);
-    ChessPeace(sf::Vector2u Coordinates, sf::Vector2u BoardSize);
-    ChessPeace(std::string Name, sf::Sprite* Sprite ,sf::Vector2u Coordinates);
-    ChessPeace(std::string Name, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2u BoardSize);
-    ChessPeace(std::string Name, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2f SpriteCoordinates);
     ChessPeace(std::string Name,std::string Type,std::string Team, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2f SpriteCoordinates);
+    ChessPeace(std::string Name,std::string Type,std::string Team, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2u ChessTileSize);
 
     ~ChessPeace();
     virtual void Move(sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove);
@@ -35,11 +31,13 @@ public:
     void SetType(std::string NewType);
     std::string GetTeam();
     sf::Vector2u GetBoardCoordinates();
-    void SetCalculatedPeaceCoordinates(sf::Vector2u BoardSize);
+    void SetCalculatedPeaceCoordinates(sf::Vector2u ChessTileSize);
     void SetBoardCoordinates(sf::Vector2u NewCoordinates);
     void SetPeaceCoordinates(sf::Vector2f NewCoordinates);
     sf::Vector2f GetPeaceCoordinates();
     void SetTeam(std::string NewTeam);
+    void SetSprite(sf::Sprite *ToSet) override;
+    void SetName(std::string ToSet) override;
 };
 
 

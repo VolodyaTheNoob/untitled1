@@ -10,7 +10,7 @@
 #include "Headers/StandartLibraries.h"
 #include "Headers/SFML.h"
 #include "Headers/Constants.h"
-#include "Headers/GameClasses/ChessPeace.h"
+#include "Headers/GameClasses/Peaces/Peaces.h"
 #include "Headers/GameClasses/PeaceMap.h"
 #include "Headers/Abstracts/Tile.h"
 #include "Headers/Abstracts/TileMap.h"

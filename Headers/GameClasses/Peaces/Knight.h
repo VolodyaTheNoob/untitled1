@@ -5,7 +5,7 @@
 #ifndef UNTITLED1_KNIGHT_H
 #define UNTITLED1_KNIGHT_H
 
-#include "Headers/GameClasses/ChessPeace.h"
+#include "ChessPeace.h"
 
 class ChessPeace;
 
@@ -14,8 +14,9 @@ private:
     static inline std::string Type = "Knight";
 public:
     Knight();
-    explicit Knight(sf::Vector2u Coordinates, sf::Vector2u BoardSize);
-    explicit Knight(std::string Name, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2u BoardSize,std::string Team);
+    using ChessPeace::ChessPeace;
+    Knight(std::string Name,std::string Type,std::string Team, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2f SpriteCoordinates);
+    Knight(std::string Name,std::string Type,std::string Team, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2u ChessTileSize);
     ~Knight();
     void Move(sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove) override;
     void Destroy() override;

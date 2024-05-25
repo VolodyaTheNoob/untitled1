@@ -4,80 +4,83 @@
 
 #include "Headers/Logic/GameFunctions/GameFunctions.h"
 
+void CreatePeace(PeaceMap* PeaceMapPtr,TextureManager* TextureManagerPtr, std::string Team, std::string PeaceType, sf::Vector2u Coordinates, sf::Vector2u ChessTileSize);
 
-void CreatePeace(PeaceMap* PeaceMapPtr, TextureManager* TextureManagerPtr,sf::Vector2u Coordinates,std::string PeaceName,std::string PeaceType, std::string PeaceTeam);
-
-//MainFunctions
-void CreateChessPeaces(PeaceMap* PeaceMapPtr, TextureManager* TextureManagerPtr) {
-    uint32_t LocalChessMap[8][8] =
-            {
-                    {3,5,7,9,11,7,5,3},
-                    {1,1,1,1,1,1,1,1},
-                    {0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0},
-                    {2,2,2,2,2,2,2,2},
-                    {4,6,8,10,12,8,6,4},
-            };
-
-
-
-    std::map<uint32_t, std::string>PeaceNameMap;
-    PeaceNameMap[0] = " ";
-    PeaceNameMap[1] = "BlackPawn";
-    PeaceNameMap[2] = "WhitePawn";
-    PeaceNameMap[3] = "BlackRook";
-    PeaceNameMap[4] = "WhiteRook";
-    PeaceNameMap[5] = "BlackBishop";
-    PeaceNameMap[6] = "WhiteBishop";
-    PeaceNameMap[7] = "BlackKnight";
-    PeaceNameMap[8] = "WhiteKnight";
-    PeaceNameMap[9] = "BlackQueen";
-    PeaceNameMap[10] = "WhiteQueen";
-    PeaceNameMap[11] = "BlackKing";
-    PeaceNameMap[12] = "WhiteKing";
-    std::map<uint32_t, std::string>PeaceTypeMap;
-    PeaceTypeMap[0] = " ";
-    PeaceTypeMap[2] = "Pawn";
-    PeaceTypeMap[4] = "Rook";
-    PeaceTypeMap[6] = "Bishop";
-    PeaceTypeMap[8] = "Knight";
-    PeaceTypeMap[10] = "Queen";
-    PeaceTypeMap[12] = "King";
-    sf::Vector2u CurrentCoordinates;
-    for (CurrentCoordinates.y = 0; CurrentCoordinates.y < 8; CurrentCoordinates.y++) {
-        for (CurrentCoordinates.x = 0; CurrentCoordinates.x < 8; CurrentCoordinates.x++) {
-            for(unsigned int PeaceMapId = 0; PeaceMapId < 13; PeaceMapId++) {
-                if (PeaceMapId == 0) {
-                    (*PeaceMapPtr->GetMapPtr())[CurrentCoordinates.y][CurrentCoordinates.x] = nullptr;
-                } else {
-                    if (LocalChessMap[CurrentCoordinates.y][CurrentCoordinates.x] == PeaceMapId) {
-                        std::string Team;
-                        int Offset = 0;
-                        if ((CurrentCoordinates.y + CurrentCoordinates.x) % 2 == 0) {
-                            Team = "White";
-                        } else {
-                            Team = "Black";
-                            Offset = 1;
-                        }
-                        CreatePeace(PeaceMapPtr, TextureManagerPtr, CurrentCoordinates, PeaceNameMap[PeaceMapId],
-                                    PeaceTypeMap[PeaceMapId - Offset], Team);
-                    }
-                }
+void CreateChessPeaces(PeaceMap* PeaceMapPtr,TextureManager* TextureManagerPtr){
+    uint32_t VirtualChessMap[8][8] = {
+            {2,3,4,5,6,4,3,2},
+            {1,1,1,1,1,1,1,1},
+            {0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0},
+            {7,7,7,7,7,7,7,7},
+            {8,9,10,11,12,10,9,8},
+    };
+    std::map<uint32_t,std::string>IdToPeaceType;
+    IdToPeaceType[0] = "Null";
+    IdToPeaceType[1] = "Pawn";
+    IdToPeaceType[2] = "Rook";
+    IdToPeaceType[3] = "Bishop";
+    IdToPeaceType[4] = "Knight";
+    IdToPeaceType[5] = "Queen";
+    IdToPeaceType[6] = "King";
+    IdToPeaceType[7] = "Pawn";
+    IdToPeaceType[8] = "Rook";
+    IdToPeaceType[9] = "Bishop";
+    IdToPeaceType[10] = "Knight";
+    IdToPeaceType[11] = "Queen";
+    IdToPeaceType[12] = "King";
+    std::string Team;
+    sf::Vector2u CurrentCoordinates(0,0);
+    for(CurrentCoordinates.y = 0;CurrentCoordinates.y < 8; CurrentCoordinates.y++){
+        for(CurrentCoordinates.x = 0;CurrentCoordinates.x < 8; CurrentCoordinates.x++){
+            if(VirtualChessMap[CurrentCoordinates.y][CurrentCoordinates.x] > 6){
+                Team = "White";
+            }else{
+                Team = "Black";
             }
+            CreatePeace(PeaceMapPtr,TextureManagerPtr,Team,IdToPeaceType[VirtualChessMap[CurrentCoordinates.y][CurrentCoordinates.x]],CurrentCoordinates, ChessTileSize);
         }
     }
 }
 
-void CreatePeace(PeaceMap* PeaceMapPtr, TextureManager* TextureManagerPtr,sf::Vector2u Coordinates,std::string PeaceName,std::string PeaceType, std::string PeaceTeam){
-    sf::Sprite *PeaceSprite = new sf::Sprite();
-    PeaceSprite->setTexture(*TextureManagerPtr->Get(PeaceName));
-    PeaceSprite->setPosition(Coordinates.x * ChessTileSize.x, Coordinates.y * ChessTileSize.y);
-    ChessPeace *Peace = new ChessPeace(PeaceName,PeaceSprite,Coordinates,PeaceSprite->getPosition());
-    Peace->SetSprite(PeaceSprite);
-    Peace->SetTeam(PeaceTeam);
-    Peace->SetType(PeaceType);
-    PeaceMapPtr->AddPeace(Peace,Coordinates);
-}
+void CreatePeace(PeaceMap* PeaceMapPtr,TextureManager* TextureManagerPtr, std::string Team, std::string PeaceType, sf::Vector2u Coordinates, sf::Vector2u ChessTileSize) {
+    if (PeaceType != "Null") {
+        sf::Sprite *TempSprite = new sf::Sprite;
+        TempSprite->setTexture(*TextureManagerPtr->Get(Team + PeaceType));
+        if (PeaceType == "Pawn") {
+            (*PeaceMapPtr->GetMapPtr())[Coordinates.y][Coordinates.x] = new Pawn(Team + PeaceType, PeaceType, Team,
+                                                                                 TempSprite, Coordinates,
+                                                                                 ChessTileSize);
+        }
+        if (PeaceType == "Rook") {
+            (*PeaceMapPtr->GetMapPtr())[Coordinates.y][Coordinates.x] = new Rook(Team + PeaceType, PeaceType, Team,
+                                                                                 TempSprite, Coordinates,
+                                                                                 ChessTileSize);
 
+        }
+        if (PeaceType == "Bishop") {
+            (*PeaceMapPtr->GetMapPtr())[Coordinates.y][Coordinates.x] = new Bishop(Team + PeaceType, PeaceType, Team,
+                                                                                   TempSprite, Coordinates,
+                                                                                   ChessTileSize);
+        }
+        if (PeaceType == "Knight") {
+            (*PeaceMapPtr->GetMapPtr())[Coordinates.y][Coordinates.x] = new King(Team + PeaceType, PeaceType, Team,
+                                                                                 TempSprite, Coordinates,
+                                                                                 ChessTileSize);
+        }
+        if (PeaceType == "Queen") {
+            (*PeaceMapPtr->GetMapPtr())[Coordinates.y][Coordinates.x] = new Queen(Team + PeaceType, PeaceType, Team,
+                                                                                  TempSprite, Coordinates,
+                                                                                  ChessTileSize);
+        }
+        if (PeaceType == "King") {
+            (*PeaceMapPtr->GetMapPtr())[Coordinates.y][Coordinates.x] = new King(Team + PeaceType, PeaceType, Team,
+                                                                                 TempSprite, Coordinates,
+                                                                                 ChessTileSize);
+        }
+    }else{
+        (*PeaceMapPtr->GetMapPtr())[Coordinates.y][Coordinates.x] = nullptr;
+    }
+}

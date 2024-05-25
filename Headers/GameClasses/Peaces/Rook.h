@@ -5,17 +5,17 @@
 #ifndef UNTITLED1_ROOK_H
 #define UNTITLED1_ROOK_H
 
-#include "Headers/GameClasses/ChessPeace.h"
+#include "ChessPeace.h"
 
 class ChessPeace;
-
 class Rook : public ChessPeace{
 private:
     static inline std::string Type = "Rook";
 public:
     Rook();
-    explicit Rook(sf::Vector2u Coordinates, sf::Vector2u BoardSize);
-    explicit Rook(std::string Name, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2u BoardSize,std::string Team);
+    using ChessPeace::ChessPeace;
+    Rook(std::string Name,std::string Type,std::string Team, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2f SpriteCoordinates);
+    Rook(std::string Name,std::string Type,std::string Team, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2u ChessTileSize);
     ~Rook();
     void Move(sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove) override;
     void Destroy() override;

@@ -5,6 +5,7 @@
 #ifndef UNTITLED1_PEACES_H
 #define UNTITLED1_PEACES_H
 
+#include "ChessPeace.h"
 #include "Headers/GameClasses/Peaces/Pawn.h"
 #include "Headers/GameClasses/Peaces/Bishop.h"
 #include "Headers/GameClasses/Peaces/Knight.h"

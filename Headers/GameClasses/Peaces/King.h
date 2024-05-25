@@ -5,7 +5,7 @@
 #ifndef UNTITLED1_KING_H
 #define UNTITLED1_KING_H
 
-#include "Headers/GameClasses/ChessPeace.h"
+#include "ChessPeace.h"
 
 class ChessPeace;
 
@@ -14,8 +14,9 @@ private:
     static inline std::string Type = "King";
 public:
     King();
-    explicit King(sf::Vector2u Coordinates, sf::Vector2u BoardSize);
-    explicit King(std::string Name, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2u BoardSize,std::string Team);
+    using ChessPeace::ChessPeace;
+    King(std::string Name,std::string Type,std::string Team, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2f SpriteCoordinates);
+    King(std::string Name,std::string Type,std::string Team, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2u ChessTileSize);
     ~King();
     void Move(sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove) override;
     void Destroy() override;

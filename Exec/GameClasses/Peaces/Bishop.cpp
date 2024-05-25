@@ -4,17 +4,6 @@
 #include "Headers/GameClasses/Peaces/Bishop.h"
 
 Bishop::Bishop() = default;
-Bishop::Bishop(sf::Vector2u Coordinates, sf::Vector2u BoardSize){
-    this->SetBoardCoordinates(Coordinates);
-    this->SetCalculatedPeaceCoordinates(BoardSize);
-}
-Bishop::Bishop(std::string Name, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2u BoardSize,std::string Team){
-    this->SetTeam(Team);
-    this->SetName(Name);
-    this->SetSprite(Sprite);
-    this->SetBoardCoordinates(Coordinates);
-    this->SetCalculatedPeaceCoordinates(BoardSize);
-}
 Bishop::~Bishop() = default;
 void Bishop::Move(sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove){
     this->SetBoardCoordinates(CoordinatesToMove);
@@ -22,4 +11,14 @@ void Bishop::Move(sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesT
 }
 void Bishop::Destroy(){
     delete this;
+}
+
+Bishop::Bishop(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
+               sf::Vector2f SpriteCoordinates) : ChessPeace(Name, Type, Team, Sprite, Coordinates, SpriteCoordinates) {
+
+}
+
+Bishop::Bishop(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
+               sf::Vector2u BoardSize) : ChessPeace(Name, Type, Team, Sprite, Coordinates, ChessTileSize) {
+
 }

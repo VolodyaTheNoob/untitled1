@@ -7,7 +7,7 @@
 
 #include "Headers/StandartLibraries.h"
 #include "Headers/SFML.h"
-#include "Headers/GameClasses/ChessPeace.h"
+#include "Headers/GameClasses/Peaces/ChessPeace.h"
 
 /*
  * Contains all Chess peaces

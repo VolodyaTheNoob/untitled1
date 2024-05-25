@@ -17,8 +17,11 @@ Entity::Entity(std::string Name, sf::Sprite* Sprite){
 Entity::~Entity() = default;
 //Functions
 void Entity::SetSprite(sf::Sprite *ToSet) {
-    this->Sprite->setTexture(*ToSet->getTexture());
-    this->Sprite->setPosition(ToSet->getPosition());
+    if(this->Sprite == nullptr){
+        this->Sprite = new sf::Sprite;
+    }
+        this->Sprite->setTexture(*ToSet->getTexture());
+        this->Sprite->setPosition(ToSet->getPosition());
 }
 void Entity::SetName(std::string ToSet) {
     this->Name = ToSet;
@@ -30,6 +33,7 @@ std::string Entity::GetName() {
     return this->Name;
 }
 //Operators
+/*
 Entity& Entity::operator=(Entity* ToCopy){
     if (this == ToCopy) {
         return *this;
@@ -38,3 +42,4 @@ Entity& Entity::operator=(Entity* ToCopy){
     this->Name = ToCopy->Name;
     return *this;
 }
+ */

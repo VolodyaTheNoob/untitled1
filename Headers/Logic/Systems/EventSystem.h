@@ -5,7 +5,7 @@
 #ifndef UNTITLED1_EVENTSYSTEM_H
 #define UNTITLED1_EVENTSYSTEM_H
 
-#include "Headers/GameClasses/ChessPeace.h"
+#include "Headers/GameClasses/Peaces/ChessPeace.h"
 #include "Headers/GameClasses/PeaceMap.h"
 #include "Headers/GameClasses/GameWindow.h"
 #include "Headers/GameClasses/ChessBoard.h"

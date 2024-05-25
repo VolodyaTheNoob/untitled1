@@ -4,17 +4,6 @@
 #include "Headers/GameClasses/Peaces/King.h"
 
 King::King() = default;
-King::King(sf::Vector2u Coordinates, sf::Vector2u BoardSize){
-    this->SetBoardCoordinates(Coordinates);
-    this->SetCalculatedPeaceCoordinates(BoardSize);
-}
-King::King(std::string Name, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2u BoardSize,std::string Team){
-    this->SetTeam(Team);
-    this->SetName(Name);
-    this->SetSprite(Sprite);
-    this->SetBoardCoordinates(Coordinates);
-    this->SetCalculatedPeaceCoordinates(BoardSize);
-}
 King::~King() = default;
 void King::Move(sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove){
     this->SetBoardCoordinates(CoordinatesToMove);
@@ -22,4 +11,14 @@ void King::Move(sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToM
 }
 void King::Destroy(){
     delete this;
+}
+
+King::King(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
+           sf::Vector2f SpriteCoordinates) : ChessPeace(Name, Type, Team, Sprite, Coordinates, SpriteCoordinates) {
+
+}
+
+King::King(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
+           sf::Vector2u BoardSize) : ChessPeace(Name, Type, Team, Sprite, Coordinates, ChessTileSize) {
+
 }

@@ -18,8 +18,8 @@ add_executable(untitled1 main.cpp
         Headers/Abstracts/Entity.h
         Exec/Managers/EntityManager.cpp
         Headers/Managers/EntityManager.h
-        Exec/GameClasses/ChessPeace.cpp
-        Headers/GameClasses/ChessPeace.h
+        Exec/GameClasses/Peaces/ChessPeace.cpp
+        Headers/GameClasses/Peaces/ChessPeace.h
         Headers/StandartLibraries.h
         Headers/SFML.h
         Exec/AbstractClasses/Window.cpp
@@ -35,7 +35,6 @@ add_executable(untitled1 main.cpp
         Headers/Constants.h
         Exec/Logic/GameFunctions/LoadChessPeacesTexturesToTextureManager.cpp
         Exec/Logic/GameFunctions/CreateChessPeaces.cpp
-        Exec/Logic/GameFunctions/CreateVirtualChessMap.cpp
         Headers/GameClasses/GameWindow.h
         Headers/Abstracts/TileMap.h
         Headers/GameClasses/Peaces/Pawn.h

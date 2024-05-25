@@ -17,9 +17,8 @@ PeaceMap::PeaceMap(sf::Vector2u BoardSize){
 PeaceMap::~PeaceMap() = default;
 //Functions
 void PeaceMap::AddPeace(ChessPeace* PeaceToAdd, sf::Vector2u BoardCoordinates){
-    //std::string Name, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2f SpriteCoordinates
-    (*this->Map)[BoardCoordinates.y][BoardCoordinates.x] = new ChessPeace(PeaceToAdd->GetName(),PeaceToAdd->GetSprite(),PeaceToAdd->GetBoardCoordinates(),PeaceToAdd->GetSprite()->getPosition());
-    (*this->Map)[BoardCoordinates.y][BoardCoordinates.x]->SetTeam(PeaceToAdd->GetTeam());
+    //std::string Name, std::string Type, std::string Team sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2f SpriteCoordinates
+    (*this->Map)[BoardCoordinates.y][BoardCoordinates.x] = new ChessPeace(PeaceToAdd->GetName(),PeaceToAdd->GetType(),PeaceToAdd->GetTeam(),PeaceToAdd->GetSprite(),PeaceToAdd->GetBoardCoordinates(),PeaceToAdd->GetSprite()->getPosition());
 }
 void PeaceMap::MovePeace(ChessPeace* PeaceToMove, sf::Vector2u BoardCoordinates){
     if((*this->Map)[PeaceToMove->GetBoardCoordinates().y][PeaceToMove->GetBoardCoordinates().x] != nullptr){
