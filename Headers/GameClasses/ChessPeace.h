@@ -26,6 +26,8 @@ public:
     ChessPeace(std::string Name, sf::Sprite* Sprite ,sf::Vector2u Coordinates);
     ChessPeace(std::string Name, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2u BoardSize);
     ChessPeace(std::string Name, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2f SpriteCoordinates);
+    ChessPeace(std::string Name,std::string Type,std::string Team, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2f SpriteCoordinates);
+
     ~ChessPeace();
     virtual void Move(sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove);
     virtual void Destroy();

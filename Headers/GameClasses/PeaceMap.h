@@ -8,9 +8,11 @@
 #include "Headers/StandartLibraries.h"
 #include "Headers/SFML.h"
 #include "Headers/GameClasses/ChessPeace.h"
+
 /*
  * Contains all Chess peaces
  */
+
 class ChessPeace;
 
 class PeaceMap{
