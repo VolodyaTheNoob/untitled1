@@ -12,14 +12,14 @@
 class ChessPeace : public Entity{
 
 private:
-    bool MoveCount;
+    /*
+    sf::Sprite *Sprite;
+    std::string Name;
+    */
     sf::Vector2u Coordinates;//(1,1) | (8,8) - like this
-    bool Changeable;
 public:
     ChessPeace();
-    ChessPeace(bool MoveCount,bool Changeable);
     ~ChessPeace();
-    //void Move(std::vector<uint32_t>&ChessMap,sf::Vector2u CoordinatesToMove);
     void SetPeaceCoordinates(sf::Vector2f NewCoordinates);
     void SetBoardCoordinates(sf::Vector2u NewCoordinates);
     sf::Vector2f GetPeaceCoordinates();

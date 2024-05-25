@@ -5,12 +5,10 @@
 #include "Headers/GameClasses/Window.h"
 //Constructors
 Window::Window(){
-    this->ChessMap = new std::vector<std::vector<uint32_t>>(8,std::vector<uint32_t>(8));
     this->TextureStorage = new TextureManager();
     this->Tiles = new EntityManager<Entity>();
     this->Objects = new EntityManager<ChessPeace>();
     this->Wnd = new sf::RenderWindow(sf::VideoMode(WindowSize.x,WindowSize.y,32),WindowTile);
-    this->CurrentPlayerMove = false;
 }
 //Destructors
 Window::~Window() = default;
@@ -38,26 +36,4 @@ EntityManager<ChessPeace>* Window::GetObjectManagerPtr(){
 }
 TextureManager* Window::GetTextureManagerPtr(){
     return this->TextureStorage;
-}
-bool Window::IsViewFlipped(){
-    return this->ViewFlipped;
-}
-std::vector<std::vector<uint32_t>>* Window::GetChessMapPtr(){
-    return this->ChessMap;
-}
-
-void Window::SetChessMap(std::vector<std::vector<uint32_t>> NewChessMap){
-    *this->ChessMap = NewChessMap;
-}
-
-bool Window::GetCurrentPlayerMove(){
-    return this->CurrentPlayerMove;
-}
-
-void Window::NextMove(){
-    if(this->CurrentPlayerMove){
-        this->CurrentPlayerMove = false;
-    }else{
-        this->CurrentPlayerMove = true;
-    }
 }

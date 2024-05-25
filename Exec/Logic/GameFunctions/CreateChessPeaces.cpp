@@ -37,13 +37,6 @@ void CreateChessPeaces(Window* WindowPtr, std::vector<std::vector<uint32_t>> Che
     PeaceMap[10] = "WhiteQueen";
     PeaceMap[11] = "BlackKing";
     PeaceMap[12] = "WhiteKing";
-    if(WindowPtr->IsViewFlipped()){
-        for(unsigned int i = 1; i < 12;i+= 2){
-            std::string Temp = PeaceMap[i];
-            PeaceMap[i] = PeaceMap[i+1];
-            PeaceMap[i+1] = Temp;
-        }
-    }
     sf::Vector2u CurrentCoordinates;
     for (CurrentCoordinates.y = 0; CurrentCoordinates.y < y; CurrentCoordinates.y++) {
         for (CurrentCoordinates.x = 0; CurrentCoordinates.x < x; CurrentCoordinates.x++) {
@@ -57,7 +50,7 @@ void CreateChessPeaces(Window* WindowPtr, std::vector<std::vector<uint32_t>> Che
 }
 
 void CreatePeace(Window* WindowPtr,sf::Vector2u Coordinates,std::string PeaceName){
-    ChessPeace *Peace = new ChessPeace(1,1);
+    ChessPeace *Peace = new ChessPeace();
     sf::Sprite *PeaceSprite = new sf::Sprite();
     PeaceSprite->setTexture(*WindowPtr->GetTextureManagerPtr()->Get(PeaceName));
     PeaceSprite->setPosition(Coordinates.x * ChessTileSize.x, Coordinates.y * ChessTileSize.y);

@@ -6,10 +6,6 @@
 
 //Constructors
 ChessPeace::ChessPeace() = default;
-ChessPeace::ChessPeace(bool MoveCount,bool Changeable){
-    this->MoveCount = MoveCount;
-    this->Changeable = Changeable;
-}
 //Destructors
 ChessPeace::~ChessPeace() = default;
 //Functions
@@ -19,7 +15,6 @@ void ChessPeace::SetPeaceCoordinates(sf::Vector2f NewCoordinates){
 void ChessPeace::SetBoardCoordinates(sf::Vector2u NewCoordinates) {
     this->Coordinates = NewCoordinates;
 }
-
 sf::Vector2f ChessPeace::GetPeaceCoordinates(){
     return this->GetSprite()->getPosition();
 }

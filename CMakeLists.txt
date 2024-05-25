@@ -22,7 +22,7 @@ add_executable(untitled1 main.cpp
         Headers/GameClasses/ChessPeace.h
         Headers/StandartLibraries.h
         Headers/SFML.h
-        Exec/GameClasses/Window.cpp
+        Exec/AbstractClasses/Window.cpp
         Headers/GameClasses/Window.h
         Headers/Logic/Logic.h
         Exec/Logic/Systems/EventSystem.cpp
