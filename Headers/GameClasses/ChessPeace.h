@@ -20,8 +20,6 @@ private:
     std::string Team = "Unknown";
     sf::Vector2u Coordinates;//(1,1) | (8,8) - like this
     void SetPeaceCoordinates(sf::Vector2f NewCoordinates);
-    void SetCalculatedPeaceCoordinates(sf::Vector2u BoardSize);
-    void SetBoardCoordinates(sf::Vector2u NewCoordinates);
     sf::Vector2f GetPeaceCoordinates();
     void SetTeam(std::string NewTeam);
 public:
@@ -36,6 +34,8 @@ public:
     std::string GetType();
     std::string GetTeam();
     sf::Vector2u GetBoardCoordinates();
+    void SetCalculatedPeaceCoordinates(sf::Vector2u BoardSize);
+    void SetBoardCoordinates(sf::Vector2u NewCoordinates);
 };
 
 

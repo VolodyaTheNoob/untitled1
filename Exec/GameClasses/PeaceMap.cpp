@@ -3,6 +3,7 @@
 //
 
 #include "Headers/GameClasses/PeaceMap.h"
+
 //Constructors
 PeaceMap::PeaceMap(){
     this->Size = sf::Vector2u(0,0);
@@ -20,6 +21,7 @@ void PeaceMap::AddPeace(ChessPeace* PeaceToAdd, sf::Vector2u BoardCoordinates){
 }
 void PeaceMap::MovePeace(ChessPeace* PeaceToMove, sf::Vector2u BoardCoordinates){
     (*this->Map)[PeaceToMove->GetBoardCoordinates().y][PeaceToMove->GetBoardCoordinates().x] = nullptr;
-    (*this->Map)[BoardCoordinates.y][BoardCoordinates.x] = PeaceToAdd;
-    PeaceToMove->Move(BoardCoordinates);
+    (*this->Map)[BoardCoordinates.y][BoardCoordinates.x] = PeaceToMove;
+    PeaceToMove->SetBoardCoordinates(BoardCoordinates);
+    PeaceToMove->SetCalculatedPeaceCoordinates(BoardCoordinates);
 }

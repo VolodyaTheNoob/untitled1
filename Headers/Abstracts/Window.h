@@ -14,17 +14,16 @@
  * Abstract class used to build own Window classes
  */
 class Window {
+    friend class GameWindow;
 private:
     sf::RenderWindow *Wnd;
     void (*RenderSystem)(Window* Wnd);
     void (*EventSystem)(Window* Wnd);
 public:
-    Window();
-    ~Window();
-    void SetRenderSystem(void (*NewRenderSystem)(Window* Wnd));
-    void CallRenderSystem();
-    void SetEventSystem(void (*NewEventSystem)(Window* Wnd));
-    void CallEventSystem();
+    virtual void SetRenderSystem(void (*NewRenderSystem)(Window* Wnd));
+    virtual void CallRenderSystem();
+    virtual void SetEventSystem(void (*NewEventSystem)(Window* Wnd));
+    virtual void CallEventSystem();
     sf::RenderWindow* GetWindowPtr();
     void SetWindowPtr(sf::RenderWindow* NewWindowPtr);
 };

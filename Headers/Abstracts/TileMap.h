@@ -14,14 +14,15 @@
  */
 class TileMap{
     friend class ChessBoard;
-    friend class ChessPeacesMap;
+    friend class PeaceMap;
 private:
     static inline uint32_t CountOfTiles{};
     std::vector<std::vector<Tile*>> *Map = nullptr;
     sf::Vector2u Size;
+    sf::Vector2u TileSize;
 public:
     TileMap();
-    TileMap(sf::Vector2u Size);
+    TileMap(sf::Vector2u Size, sf::Vector2u TileSize);
     ~TileMap();
     std::vector<std::vector<Tile*>>* GetMap();
     sf::Vector2u GetSize();
@@ -32,6 +33,7 @@ public:
     void ResizeMap();
     void ResizeMap(sf::Vector2u NewCoordinates);
     void SetSize(sf::Vector2u NewSize);
+    void SetTileSize(sf::Vector2u NewTileSize);
     void AddTile(Tile* ToAdd);
     void ChangeTile(sf::Vector2u Coordinates, Tile *ToChange);
     void DeleteTile(sf::Vector2u Coordinates);

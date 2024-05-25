@@ -7,8 +7,9 @@
 TileMap::TileMap(){
     this->Map = new std::vector<std::vector<Tile*>>(0,std::vector<Tile*>(0));
 }
-TileMap::TileMap(sf::Vector2u Size){
+TileMap::TileMap(sf::Vector2u Size, sf::Vector2u TileSize){
     this->Size = Size;
+    this->TileSize = TileSize;
     this->Map = new std::vector<std::vector<Tile*>>(this->Size.y,std::vector<Tile*>(this->Size.x));
 }
 //Destructors
@@ -45,6 +46,9 @@ void TileMap::ResizeMap(sf::Vector2u NewCoordinates){
 }
 void TileMap::SetSize(sf::Vector2u NewSize){
     this->Size = NewSize;
+}
+void TileMap::SetTileSize(sf::Vector2u NewTileSize){
+    this->TileSize = NewTileSize;
 }
 void TileMap::AddTile(Tile* ToAdd){
     sf::Vector2u CurrentPos;

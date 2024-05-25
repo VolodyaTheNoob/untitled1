@@ -4,6 +4,8 @@
 
 #include "Headers/Logic/Systems/RenderSystem.h"
 
-void RenderSystem(Window* Wnd){
+void RenderSystem(GameWindow* Wnd){
+    Wnd->GetWindowPtr()->clear();
 
+    Wnd->GetWindowPtr()->display();
 }

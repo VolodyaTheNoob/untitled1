@@ -11,6 +11,8 @@
 /*
  * Contains all Chess peaces
  */
+class ChessPeace;
+
 class PeaceMap{
 private:
     sf::Vector2u Size;

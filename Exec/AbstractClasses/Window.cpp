@@ -3,14 +3,6 @@
 //
 
 #include "Headers/Abstracts/Window.h"
-//Constructors
-Window::Window(){
-    this->RenderSystem = nullptr;
-    this->EventSystem = nullptr;
-    this->Wnd = new sf::RenderWindow(sf::VideoMode(WindowSize.x,WindowSize.y,32),WindowTile);
-}
-//Destructors
-Window::~Window() = default;
 //Functions
 void Window::SetRenderSystem(void (*NewRenderSystem)(Window* Wnd)){
     this->RenderSystem = NewRenderSystem;

@@ -5,10 +5,13 @@
 #ifndef UNTITLED1_EVENTSYSTEM_H
 #define UNTITLED1_EVENTSYSTEM_H
 
-#include "Headers/Abstracts/Window.h"
+#include "Headers/GameClasses/ChessPeace.h"
+#include "Headers/GameClasses/PeaceMap.h"
+#include "Headers/GameClasses/GameWindow.h"
+#include "Headers/GameClasses/ChessBoard.h"
 /*
  * Function/Function which linked to Window to do magic
  */
-void EventSystem(Window* Wnd);
+void EventSystem(GameWindow* Wnd);
 
 #endif //UNTITLED1_EVENTSYSTEM_H

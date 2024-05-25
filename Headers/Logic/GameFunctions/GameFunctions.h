@@ -7,8 +7,13 @@
 /*
  * Game functions there - we use them in Event/Render system
  */
-#include "Headers/Abstracts/Window.h"
+#include "Headers/StandartLibraries.h"
+#include "Headers/SFML.h"
 #include "Headers/Constants.h"
+#include "Headers/GameClasses/ChessPeace.h"
+#include "Headers/GameClasses/PeaceMap.h"
+#include "Headers/GameClasses/GameWindow.h"
+#include "Headers/GameClasses/ChessBoard.h"
 
 void LoadChessTileTexturesToWindow(Window* WindowPtr);
 void LoadChessPeacesTexturesToWindow(Window* WindowPtr);
