@@ -5,7 +5,7 @@
 
 Bishop::Bishop() = default;
 Bishop::~Bishop() = default;
-void Bishop::Move(sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove){
+bool Bishop::Move(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove){
     this->SetBoardCoordinates(CoordinatesToMove);
     this->SetPeaceCoordinates(PeaceCoordinatesToMove);
 }

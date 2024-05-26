@@ -5,7 +5,7 @@
 
 King::King() = default;
 King::~King() = default;
-void King::Move(sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove){
+bool King::Move(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove){
     this->SetBoardCoordinates(CoordinatesToMove);
     this->SetPeaceCoordinates(PeaceCoordinatesToMove);
 }

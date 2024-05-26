@@ -5,7 +5,7 @@
 
 Knight::Knight() = default;
 Knight::~Knight() = default;
-void Knight::Move(sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove){
+bool Knight::Move(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove){
     this->SetBoardCoordinates(CoordinatesToMove);
     this->SetPeaceCoordinates(PeaceCoordinatesToMove);
 }

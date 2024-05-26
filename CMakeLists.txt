@@ -18,7 +18,7 @@ add_executable(untitled1 main.cpp
         Headers/Abstracts/Entity.h
         Exec/Managers/EntityManager.cpp
         Headers/Managers/EntityManager.h
-        Exec/GameClasses/Peaces/ChessPeace.cpp
+        Exec/GameClasses/ChessPeace.cpp
         Headers/GameClasses/Peaces/ChessPeace.h
         Headers/StandartLibraries.h
         Headers/SFML.h

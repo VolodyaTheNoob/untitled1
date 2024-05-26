@@ -9,12 +9,14 @@ GameWindow::GameWindow(){
     this->RenderSystem = nullptr;
     this->Board = nullptr;
     this->Wnd = new sf::RenderWindow(sf::VideoMode(512,512,32),"A");
+    this->Wnd->setFramerateLimit(60);
 }
 GameWindow::GameWindow(ChessBoard *Board){
     this->EventSystem = nullptr;
     this->RenderSystem = nullptr;
     this->Board = Board;
     this->Wnd = new sf::RenderWindow(sf::VideoMode(512,512,32),"A");
+    this->Wnd->setFramerateLimit(60);
 }
 GameWindow::~GameWindow() = default;
 

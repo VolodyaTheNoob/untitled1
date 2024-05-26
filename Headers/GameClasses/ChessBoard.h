@@ -26,10 +26,13 @@ public:
     ChessBoard();
     ChessBoard(bool IsFlipped,std::string CurrentPlayerMove, TileMap* TileMapPtr, PeaceMap* PeaceMapPtr, sf::Vector2u BoardSize);
     ~ChessBoard();
-    bool IsPlayerMoveCorrect(ChessPeace* MovedPeace, sf::Vector2u NewPeacePosition);
+    bool PlayerMove(ChessPeace* MovedPeace, sf::Vector2u NewPeacePosition);
     TileMap* GetTileMapPtr();
     PeaceMap* GetPeaceMapPtr();
     sf::Vector2u GetSize();
+    std::string GetCurrentPlayerMove();
+    bool IsViewFlipped();
+    void NextPlayer();
 };
 
 #endif //UNTITLED1_CHESSBOARD_H

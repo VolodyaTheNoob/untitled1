@@ -5,7 +5,7 @@
 
 Rook::Rook() = default;
 Rook::~Rook() = default;
-void Rook::Move(sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove){
+bool Rook::Move(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove){
     this->SetBoardCoordinates(CoordinatesToMove);
     this->SetPeaceCoordinates(PeaceCoordinatesToMove);
 }

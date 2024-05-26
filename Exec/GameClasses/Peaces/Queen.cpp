@@ -5,7 +5,7 @@
 
 Queen::Queen() = default;
 Queen::~Queen() = default;
-void Queen::Move(sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove){
+bool Queen::Move(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove){
     this->SetBoardCoordinates(CoordinatesToMove);
     this->SetPeaceCoordinates(PeaceCoordinatesToMove);
 }

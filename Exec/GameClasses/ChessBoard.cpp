@@ -21,9 +21,12 @@ ChessBoard::ChessBoard(bool IsFlipped,std::string CurrentPlayerMove, TileMap* Ti
 //Destructors
 ChessBoard::~ChessBoard() = default;
 //Functions
-bool ChessBoard::IsPlayerMoveCorrect(ChessPeace* MovedPeace, sf::Vector2u NewPeacePosition){
-    std::cout << "Move" << "\n";
-    return true;
+bool ChessBoard::PlayerMove(ChessPeace* MovedPeace, sf::Vector2u NewPeacePosition){
+    if(MovedPeace->Move(this,NewPeacePosition,MovedPeace->GetPeaceCoordinates())){
+        this->NextPlayer();
+        return true;
+    }
+    return false;
 }
 TileMap* ChessBoard::GetTileMapPtr(){
     return this->Tiles;
@@ -33,4 +36,17 @@ PeaceMap* ChessBoard::GetPeaceMapPtr(){
 }
 sf::Vector2u ChessBoard::GetSize(){
     return this->Size;
+}
+std::string ChessBoard::GetCurrentPlayerMove(){
+    return this->CurrentPlayerMove;
+}
+bool ChessBoard::IsViewFlipped(){
+    return this->IsFlipped;
+}
+void ChessBoard::NextPlayer(){
+    if(this->GetCurrentPlayerMove() == "White"){
+        this->CurrentPlayerMove = "Black";
+    }else{
+        this->CurrentPlayerMove = "White";
+    }
 }

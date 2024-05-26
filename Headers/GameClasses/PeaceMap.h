@@ -8,7 +8,6 @@
 #include "Headers/StandartLibraries.h"
 #include "Headers/SFML.h"
 #include "Headers/GameClasses/Peaces/ChessPeace.h"
-
 /*
  * Contains all Chess peaces
  */
@@ -25,6 +24,7 @@ public:
     ~PeaceMap();
     void AddPeace(ChessPeace* PeaceToAdd, sf::Vector2u BoardCoordinates);
     void MovePeace(ChessPeace* PeaceToMove, sf::Vector2u BoardCoordinates);
+
     std::vector<std::vector<ChessPeace*>>* GetMapPtr();
 };
 

@@ -16,16 +16,22 @@ void EventSystem(GameWindow* Wnd){
         }
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
             ChessPeace* ClickedPeace = GetClickedPeace(Wnd);
-            sf::Vector2f PrevCoordinates = ClickedPeace->GetPeaceCoordinates();
-            PeaceDragAndDrop(Wnd,ClickedPeace);
-            sf::Vector2u TileSize = Wnd->GetBoardPtr()->GetTileMapPtr()->GetTileSize();
-            bool IsPosChanged = IsPeacePositionChanged(ClickedPeace->GetBoardCoordinates(),ClickedPeace->GetPeaceCoordinates(),TileSize);
-            if(IsPosChanged) {
-                sf::Vector2f CurrentSpritePosition = ClickedPeace->GetPeaceCoordinates();
-                sf::Vector2u NewTilePosition;CurrentSpritePosition.x += 20;CurrentSpritePosition.y += 40;
-                NewTilePosition.x = uint32_t(CurrentSpritePosition.x) / TileSize.x;NewTilePosition.y = uint32_t(CurrentSpritePosition.y) / TileSize.y;
-                if(!Wnd->GetBoardPtr()->IsPlayerMoveCorrect(ClickedPeace,NewTilePosition)){
-                    ClickedPeace->SetPeaceCoordinates(PrevCoordinates);
+            if(ClickedPeace != nullptr) {
+                sf::Vector2f PrevCoordinates = ClickedPeace->GetPeaceCoordinates();
+                PeaceDragAndDrop(Wnd, ClickedPeace);
+                sf::Vector2u TileSize = Wnd->GetBoardPtr()->GetTileMapPtr()->GetTileSize();
+                bool IsPosChanged = IsPeacePositionChanged(ClickedPeace->GetBoardCoordinates(),ClickedPeace->GetPeaceCoordinates(), TileSize);
+                sf::Vector2u ClickedPeacePosition = ClickedPeace->GetBoardCoordinates();
+                if (IsPosChanged) {
+                    sf::Vector2f CurrentSpritePosition = ClickedPeace->GetPeaceCoordinates();
+                    sf::Vector2u NewTilePosition;
+                    CurrentSpritePosition.x += 20;
+                    CurrentSpritePosition.y += 40;
+                    NewTilePosition.x = uint32_t(CurrentSpritePosition.x) / TileSize.x;
+                    NewTilePosition.y = uint32_t(CurrentSpritePosition.y) / TileSize.y;
+                    if (!Wnd->GetBoardPtr()->PlayerMove(ClickedPeace, NewTilePosition)) {
+                        ClickedPeace->SetPeaceCoordinates(PrevCoordinates);
+                    }
                 }
             }
         }
@@ -49,7 +55,9 @@ ChessPeace* GetClickedPeace(GameWindow* Wnd){
         for(unsigned int x = 0; x < Wnd->GetBoardPtr()->GetSize().x && ClickedPeace == nullptr;x++){
             if((*PeaceMapPtr->GetMapPtr())[y][x] != nullptr) {
                 if (IsMouseOnSprite(Wnd, (*PeaceMapPtr->GetMapPtr())[y][x]->GetSprite())) {
-                    ClickedPeace = (*PeaceMapPtr->GetMapPtr())[y][x];
+                    if((*PeaceMapPtr->GetMapPtr())[y][x]->GetType() != "Unknown") {
+                        ClickedPeace = (*PeaceMapPtr->GetMapPtr())[y][x];
+                    }
                 }
             }
         }
