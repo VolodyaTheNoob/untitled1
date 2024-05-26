@@ -7,17 +7,6 @@
 Pawn::Pawn() = default;
 Pawn::~Pawn() = default;
 
-bool Pawn::Move(ChessBoard* ChessBoardPtr,sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove) {
-    if(this->IsPeaceTurn(ChessBoardPtr))
-    {
-        if (this->IsCanMoveThere(ChessBoardPtr, CoordinatesToMove)) {
-            ChessBoardPtr->GetPeaceMapPtr()->MovePeace(this,CoordinatesToMove);
-            return true;
-        }
-    }
-    return false;
-}
-
 bool Pawn::IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove) {
     sf::Vector2u CurrentPos = this->GetBoardCoordinates();
     if (CoordinatesToMove.y - CurrentPos.y == (abs(CoordinatesToMove.y - CurrentPos.y) * this->MoveVectorY)) {
@@ -51,7 +40,7 @@ bool Pawn::IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToM
     }
     return false;
 }
-bool Pawn::IsAttackingSquare(sf::Vector2u SquareToAttack, sf::Vector2u BoardSize){
+bool Pawn::IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack, sf::Vector2u BoardSize){
     if(SquareToAttack.x >= BoardSize.x || SquareToAttack.y >= BoardSize.y){
         return false;
     }
@@ -70,9 +59,6 @@ bool Pawn::IsAttackingSquare(sf::Vector2u SquareToAttack, sf::Vector2u BoardSize
         }
     }
     return false;
-}
-void Pawn::Destroy(){
-    delete this;
 }
 
 Pawn::Pawn(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,

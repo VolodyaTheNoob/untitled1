@@ -5,8 +5,7 @@
 #ifndef UNTITLED1_PEACEMAP_H
 #define UNTITLED1_PEACEMAP_H
 
-#include "Headers/StandartLibraries.h"
-#include "Headers/SFML.h"
+
 #include "Headers/GameClasses/Peaces/ChessPeace.h"
 /*
  * Contains all Chess peaces

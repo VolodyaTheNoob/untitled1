@@ -8,6 +8,7 @@ King::~King() = default;
 bool King::Move(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove){
     this->SetBoardCoordinates(CoordinatesToMove);
     this->SetPeaceCoordinates(PeaceCoordinatesToMove);
+    return true;
 }
 void King::Destroy(){
     delete this;

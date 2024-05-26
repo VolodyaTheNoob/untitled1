@@ -5,11 +5,13 @@
 #ifndef UNTITLED1_GAMEWINDOW_H
 #define UNTITLED1_GAMEWINDOW_H
 
-#include "Headers/StandartLibraries.h"
-#include "Headers/SFML.h"
 #include "Headers/Abstracts/Window.h"
+#include "Headers/GameClasses/ChessBoard.h"
 
 //Game class based on abstract Window class
+
+class ChessBoard;
+class Window;
 
 class GameWindow : public Window{
 private:

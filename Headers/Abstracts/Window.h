@@ -8,11 +8,14 @@
 #include "Headers/StandartLibraries.h"
 #include "Headers/SFML.h"
 #include "Headers/Constants.h"
-#include "Headers/Managers/EntityManager.h"
 #include "Headers/Managers/TextureManager.h"
 /*
  * Abstract class used to build own Window classes
  */
+class GameWindow;
+class Window;
+class TextureManager;
+
 class Window {
     friend class GameWindow;
 private:

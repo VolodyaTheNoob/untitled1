@@ -5,11 +5,8 @@
 #ifndef UNTITLED1_CHESSPEACE_H
 #define UNTITLED1_CHESSPEACE_H
 
-#include "Headers/StandartLibraries.h"
-#include "Headers/SFML.h"
-#include "Headers/Abstracts/Entity.h"
 #include "Headers/GameClasses/ChessBoard.h"
-
+#include "Headers/Abstracts/Entity.h"
 /*
  * Abstract class for game used to build ChessPeaces
  */
@@ -46,7 +43,8 @@ public:
     bool IsKingThere(ChessBoard* ChessBoardPtr,sf::Vector2u CoordinatesToMove);
     bool IsPeaceTurn(ChessBoard* ChessBoardPtr);
     virtual void* CopySelf();
-    virtual bool IsAttackingSquare(sf::Vector2u SquareToAttack, sf::Vector2u BoardSize);
+    virtual bool IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack, sf::Vector2u BoardSize);
+    virtual bool IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove);
 };
 
 

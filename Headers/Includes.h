@@ -9,6 +9,7 @@
 //SFML Depending
 #include "SFML.h"
 //Our Base/Abstract classes
+#include "Headers/Abstracts/Window.h"
 //Constants
 #include "Constants.h"
 //Game classes - based on Base/Abstract classes

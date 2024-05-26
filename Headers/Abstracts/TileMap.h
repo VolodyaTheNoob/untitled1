@@ -5,8 +5,6 @@
 #ifndef UNTITLED1_TILEMAP_H
 #define UNTITLED1_TILEMAP_H
 
-#include "Headers/StandartLibraries.h"
-#include "Headers/SFML.h"
 #include "Headers/Abstracts/Tile.h"
 
 /*

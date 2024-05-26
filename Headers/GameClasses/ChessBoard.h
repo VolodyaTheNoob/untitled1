@@ -7,12 +7,11 @@
 
 #include "Headers/StandartLibraries.h"
 #include "Headers/SFML.h"
-//#include "Headers/GameClasses/GameWindow.h"
 #include "Headers/GameClasses/PeaceMap.h"
 #include "Headers/Abstracts/TileMap.h"
 
-class Window;
 class PeaceMap;
+class TileMap;
 class ChessPeace;
 
 class ChessBoard{

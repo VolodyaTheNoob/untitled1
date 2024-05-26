@@ -7,6 +7,7 @@
 
 #include "Headers/StandartLibraries.h"
 #include "Headers/SFML.h"
+#include "Headers/Constants.h"
 /*
  * Abstract class used to build own Entity/Object classes
  */

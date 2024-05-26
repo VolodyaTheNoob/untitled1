@@ -5,9 +5,6 @@
 #ifndef UNTITLED1_TILE_H
 #define UNTITLED1_TILE_H
 
-#include "Headers/StandartLibraries.h"
-#include "Headers/SFML.h"
-#include "Headers/Constants.h"
 #include "Headers/Abstracts/Entity.h"
 
 class Tile:Entity{
