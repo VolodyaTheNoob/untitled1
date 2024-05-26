@@ -34,9 +34,9 @@ bool ChessBoard::PlayerMove(ChessPeace* MovedPeace, sf::Vector2u NewPeacePositio
          * Also in future we should add extra checks but its in future
          */
         //check if king checked after move if not pass
-            //MovePeace
+            this->GetPeaceMapPtr()->MovePeace(MovedPeace,NewPeacePosition);
             this->NextPlayer();
-             return true;
+            return true;
     }
     return false;
 }

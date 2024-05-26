@@ -12,6 +12,8 @@ class ChessPeace;
 class Queen : public ChessPeace{
 private:
     static inline std::string Type = "Queen";
+    bool IsCanMoveCross(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove);
+    bool IsCanMoveStraight(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove);
 public:
     Queen();
     using ChessPeace::ChessPeace;
@@ -19,8 +21,8 @@ public:
     Queen(std::string Name,std::string Type,std::string Team, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2u ChessTileSize);
     ~Queen();
    // void Destroy() override;
-   // bool IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove) override;
-  //  bool IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack, sf::Vector2u BoardSize) override;
+    bool IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove) override;
+    bool IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack, sf::Vector2u BoardSize) override;
 };
 
 #endif //UNTITLED1_QUEEN_H

@@ -48,15 +48,15 @@ bool ChessPeace::Move(ChessBoard* ChessBoardPtr,sf::Vector2u CoordinatesToMove, 
     }
     return false;
 }
-
+void ChessPeace::Destroy(){
+    delete this;
+}
 void ChessPeace::SetCalculatedPeaceCoordinates(sf::Vector2u ChessTileSize) {
     float LocalX = float(this->Coordinates.x) * float(ChessTileSize.x);
     float LocalY = float(this->Coordinates.y) * float(ChessTileSize.y);
     this->SetPeaceCoordinates(sf::Vector2f(LocalX, LocalY));
 }
-void ChessPeace::Destroy(){
-    delete this;
-}
+
 void ChessPeace::DestroyEnemy(ChessBoard* ChessBoardPtr,sf::Vector2u CoordinatesToMove) {
     if((*ChessBoardPtr->GetPeaceMapPtr()->GetMapPtr())[CoordinatesToMove.y][CoordinatesToMove.x] != nullptr) {
         (*ChessBoardPtr->GetPeaceMapPtr()->GetMapPtr())[CoordinatesToMove.y][CoordinatesToMove.x]->Destroy();
@@ -86,7 +86,6 @@ bool ChessPeace::IsAllieThere(ChessBoard* ChessBoardPtr,sf::Vector2u Coordinates
 }
 bool ChessPeace::IsEnemyThere(ChessBoard* ChessBoardPtr,sf::Vector2u CoordinatesToMove){
     if((*(ChessBoardPtr->GetPeaceMapPtr()->GetMapPtr()))[CoordinatesToMove.y][CoordinatesToMove.x] != nullptr) {
-        std::cout << (*(ChessBoardPtr->GetPeaceMapPtr()->GetMapPtr()))[CoordinatesToMove.y][CoordinatesToMove.x]->GetTeam();
         if ((*(ChessBoardPtr->GetPeaceMapPtr()->GetMapPtr()))[CoordinatesToMove.y][CoordinatesToMove.x]->GetTeam() !=
             ChessBoardPtr->GetCurrentPlayerMove()) {
             return true;

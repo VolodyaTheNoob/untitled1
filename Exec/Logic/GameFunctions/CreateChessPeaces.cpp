@@ -66,7 +66,7 @@ void CreatePeace(PeaceMap* PeaceMapPtr,TextureManager* TextureManagerPtr, std::s
                                                                                    ChessTileSize);
         }
         if (PeaceType == "Knight") {
-            (*PeaceMapPtr->GetMapPtr())[Coordinates.y][Coordinates.x] = new King(Team + PeaceType, PeaceType, Team,
+            (*PeaceMapPtr->GetMapPtr())[Coordinates.y][Coordinates.x] = new Knight(Team + PeaceType, PeaceType, Team,
                                                                                  TempSprite, Coordinates,
                                                                                  ChessTileSize);
         }

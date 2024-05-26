@@ -16,19 +16,21 @@ bool Pawn::IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToM
                     if(abs(CurrentPos.x - CoordinatesToMove.x) == 1){
                         if (IsEnemyThere(ChessBoardPtr, CoordinatesToMove) && (!IsKingThere(ChessBoardPtr,CoordinatesToMove))) {
                             this->DestroyEnemy(ChessBoardPtr,CoordinatesToMove);
+                            this->SetAlreadyMoved(true);
                             return true;
                         }
                     }else{
                         if (IsTileEmpty(ChessBoardPtr,CoordinatesToMove)) {
+                            this->SetAlreadyMoved(true);
                             return true;
                         }
                     }
                 }else{
-                    if(!this->AlreadyMoved) {
+                    if(!this->IsAlreadyMove()) {
                         if (abs(CurrentPos.y - CoordinatesToMove.y) == 2) {
                             if (abs(CurrentPos.x - CoordinatesToMove.x) == 0) {
                                 if (IsTileEmpty(ChessBoardPtr, CoordinatesToMove)) {
-                                    this->AlreadyMoved = true;
+                                    this->SetAlreadyMoved(true);
                                     return true;
                                 }
                             }
@@ -75,4 +77,10 @@ Pawn::Pawn(std::string Name, std::string Type, std::string Team, sf::Sprite *Spr
     if(this->GetTeam() == "White"){
         MoveVectorY *= -1;
     }
+}
+void Pawn::SetAlreadyMoved(bool NewState){
+    this->AlreadyMoved = NewState;
+}
+bool Pawn::IsAlreadyMove(){
+    return this->AlreadyMoved;
 }
