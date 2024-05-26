@@ -5,11 +5,11 @@
 
 Rook::Rook() = default;
 Rook::~Rook() = default;
-
+/*
 void Rook::Destroy(){
     delete this;
 }
-
+*/
 Rook::Rook(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
            sf::Vector2f SpriteCoordinates) : ChessPeace(Name, Type, Team, Sprite, Coordinates, SpriteCoordinates) {
 

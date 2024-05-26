@@ -6,9 +6,11 @@
 Knight::Knight() = default;
 Knight::~Knight() = default;
 
+/*
 void Knight::Destroy(){
     delete this;
 }
+*/
 
 Knight::Knight(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
                sf::Vector2f SpriteCoordinates) : ChessPeace(Name, Type, Team, Sprite, Coordinates, SpriteCoordinates) {

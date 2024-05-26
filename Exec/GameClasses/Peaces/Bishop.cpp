@@ -5,11 +5,11 @@
 
 Bishop::Bishop() = default;
 Bishop::~Bishop() = default;
-
+/*
 void Bishop::Destroy(){
     delete this;
-}
 
+*/
 Bishop::Bishop(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
                sf::Vector2f SpriteCoordinates) : ChessPeace(Name, Type, Team, Sprite, Coordinates, SpriteCoordinates) {
 

@@ -5,6 +5,7 @@
 
 King::King() = default;
 King::~King() = default;
+/*
 bool King::Move(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove){
     this->SetBoardCoordinates(CoordinatesToMove);
     this->SetPeaceCoordinates(PeaceCoordinatesToMove);
@@ -13,6 +14,7 @@ bool King::Move(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove, sf::V
 void King::Destroy(){
     delete this;
 }
+ */
 
 King::King(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
            sf::Vector2f SpriteCoordinates) : ChessPeace(Name, Type, Team, Sprite, Coordinates, SpriteCoordinates) {
