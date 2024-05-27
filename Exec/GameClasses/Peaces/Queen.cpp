@@ -190,7 +190,7 @@ bool Queen::IsCanAttackCross(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAtt
                 MoveVector.y = -1;
                 TempCoordinatesToMove.y += 1;
             }else{
-                MoveVector.y = -1;
+                MoveVector.y = 1;
                 TempCoordinatesToMove.y -= 1;
             }
             while(CurrentPosition != TempCoordinatesToMove){

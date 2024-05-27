@@ -37,6 +37,7 @@ public:
     sf::Vector2u GetEnemyKingCoordinates();
     bool IsOwnKingChecked();
     bool IsOwnKingCheckmated();
+    bool IsTileAttacked(sf::Vector2u NewPeaceBoardPosition);
 };
 
 #endif //UNTITLED1_CHESSBOARD_H

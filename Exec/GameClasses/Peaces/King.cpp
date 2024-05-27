@@ -8,8 +8,6 @@ King::~King() = default;
 
 bool King::Move(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove){
     if (this->IsCanMoveThere(ChessBoardPtr, CoordinatesToMove)) {
-        //Need check if is tile attacked
-        //IsTileAttacked
         return true;
     }
     return false;
