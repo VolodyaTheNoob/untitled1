@@ -8,14 +8,14 @@ void CreatePeace(PeaceMap* PeaceMapPtr,TextureManager* TextureManagerPtr, std::s
 
 void CreateChessPeaces(PeaceMap* PeaceMapPtr,TextureManager* TextureManagerPtr){
     uint32_t VirtualChessMap[8][8] = {
-            {2,3,4,5,6,4,3,2},
+            {2,4,3,5,6,3,4,2},
             {1,1,1,1,1,1,1,1},
             {0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0},
             {7,7,7,7,7,7,7,7},
-            {8,9,10,11,12,10,9,8},
+            {8,10,9,11,12,9,10,8},
     };
     std::map<uint32_t,std::string>IdToPeaceType;
     IdToPeaceType[0] = "Null";

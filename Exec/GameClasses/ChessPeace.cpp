@@ -48,9 +48,9 @@ bool ChessPeace::Move(ChessBoard* ChessBoardPtr,sf::Vector2u CoordinatesToMove) 
 void ChessPeace::Destroy(){
     delete this;
 }
-void ChessPeace::SetCalculatedPeaceCoordinates(sf::Vector2u ChessTileSize) {
-    float LocalX = float(this->Coordinates.x) * float(ChessTileSize.x);
-    float LocalY = float(this->Coordinates.y) * float(ChessTileSize.y);
+void ChessPeace::SetCalculatedPeaceCoordinates(sf::Vector2u chessTileSize) {
+    float LocalX = float(this->Coordinates.x) * float(chessTileSize.x);
+    float LocalY = float(this->Coordinates.y) * float(chessTileSize.y);
     this->SetPeaceCoordinates(sf::Vector2f(LocalX, LocalY));
 }
 

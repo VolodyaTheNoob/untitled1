@@ -36,6 +36,7 @@ public:
     sf::Vector2u GetOwnKingCoordinates();
     sf::Vector2u GetEnemyKingCoordinates();
     bool IsOwnKingChecked();
+    bool IsOwnKingCheckmated();
 };
 
 #endif //UNTITLED1_CHESSBOARD_H

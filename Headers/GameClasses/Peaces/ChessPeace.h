@@ -32,7 +32,7 @@ public:
     void SetType(std::string NewType);
     std::string GetTeam();
     sf::Vector2u GetBoardCoordinates();
-    void SetCalculatedPeaceCoordinates(sf::Vector2u ChessTileSize);
+    void SetCalculatedPeaceCoordinates(sf::Vector2u chessTileSize);
     void SetBoardCoordinates(sf::Vector2u NewCoordinates);
     void SetPeaceCoordinates(sf::Vector2f NewCoordinates);
     sf::Vector2f GetPeaceCoordinates();
