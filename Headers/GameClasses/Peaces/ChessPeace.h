@@ -25,7 +25,7 @@ public:
     ChessPeace(std::string Name,std::string Type,std::string Team, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2u ChessTileSize);
 
     ~ChessPeace();
-    virtual bool Move(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove);
+    virtual bool Move(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove);
     virtual void Destroy();
     virtual void DestroyEnemy(ChessBoard* ChessBoardPtr,sf::Vector2u CoordinatesToMove);
     std::string GetType();
@@ -43,7 +43,7 @@ public:
     bool IsKingThere(ChessBoard* ChessBoardPtr,sf::Vector2u CoordinatesToMove);
     bool IsPeaceTurn(ChessBoard* ChessBoardPtr);
     virtual void* CopySelf();
-    virtual bool IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack, sf::Vector2u BoardSize);
+    virtual bool IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack);
     virtual bool IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove);
 };
 

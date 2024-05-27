@@ -62,9 +62,37 @@ bool Bishop::IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesT
     return false;
 }
 
-bool Bishop::IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack, sf::Vector2u BoardSize){
-    if(IsCanMoveThere(ChessBoardPtr,SquareToAttack)){
-        return true;
+bool Bishop::IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack){
+    if(this->GetBoardCoordinates() != SquareToAttack){
+        int OffsetX = abs(int(this->GetBoardCoordinates().x) - int(SquareToAttack.x));
+        int OffsetY = abs(int(this->GetBoardCoordinates().y) - int(SquareToAttack.y));
+        if(OffsetX == OffsetY){
+            sf::Vector2i MoveVector;
+            OffsetX = int(this->GetBoardCoordinates().x) - int(SquareToAttack.x);
+            OffsetY = int(this->GetBoardCoordinates().y) - int(SquareToAttack.y);
+            if(OffsetX > 0){
+                MoveVector.x = -1;
+            }else{
+                MoveVector.x = 1;
+            }
+            if(OffsetY > 0){
+                MoveVector.y = -1;
+            }else{
+                MoveVector.y = 1;
+            }
+            sf::Vector2u TempCoordinatesToMove = SquareToAttack;
+            TempCoordinatesToMove.x += MoveVector.x;
+            TempCoordinatesToMove.y += MoveVector.y;
+            sf::Vector2u CurrentPosition = TempCoordinatesToMove;
+            while(CurrentPosition != TempCoordinatesToMove){
+                CurrentPosition.x += MoveVector.x;
+                CurrentPosition.y += MoveVector.y;
+                if((*ChessBoardPtr->GetPeaceMapPtr()->GetMapPtr())[CurrentPosition.y][CurrentPosition.x] != nullptr){
+                    return false;
+                }
+            }
+            return true;
+        }
     }
     return false;
 }

@@ -22,7 +22,7 @@ public:
     PeaceMap(sf::Vector2u BoardSize);
     ~PeaceMap();
     void AddPeace(ChessPeace* PeaceToAdd, sf::Vector2u BoardCoordinates);
-    void MovePeace(ChessPeace* PeaceToMove, sf::Vector2u BoardCoordinates);
+    void MovePeace(ChessPeace* PeaceToMove, sf::Vector2u BoardCoordinates,sf::Vector2f NewPeacePosition);
 
     std::vector<std::vector<ChessPeace*>>* GetMapPtr();
 };

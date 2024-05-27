@@ -39,12 +39,9 @@ sf::Vector2f ChessPeace::GetPeaceCoordinates(){
 sf::Vector2u ChessPeace::GetBoardCoordinates(){
     return this->Coordinates;
 }
-bool ChessPeace::Move(ChessBoard* ChessBoardPtr,sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove) {
-    if(this->IsPeaceTurn(ChessBoardPtr))
-    {
-        if (this->IsCanMoveThere(ChessBoardPtr, CoordinatesToMove)) {
-            return true;
-        }
+bool ChessPeace::Move(ChessBoard* ChessBoardPtr,sf::Vector2u CoordinatesToMove) {
+    if (this->IsCanMoveThere(ChessBoardPtr, CoordinatesToMove)) {
+        return true;
     }
     return false;
 }
@@ -117,7 +114,7 @@ bool ChessPeace::IsPeaceTurn(ChessBoard* ChessBoardPtr){
 void* ChessPeace::CopySelf(){
     return this;
 }
-bool ChessPeace::IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack, sf::Vector2u BoardSize){
+bool ChessPeace::IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack){
     return true;
 }
 bool ChessPeace::IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove){

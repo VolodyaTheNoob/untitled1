@@ -66,9 +66,40 @@ bool Rook::IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToM
     return false;
 }
 
-bool Rook::IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack, sf::Vector2u BoardSize){
-    if(IsCanMoveThere(ChessBoardPtr,SquareToAttack)){
-        return true;
-    }
+bool Rook::IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack){
+    sf::Vector2u CurrentPosition = this->GetBoardCoordinates();
+        sf::Vector2i MoveVector(0,0);
+        if(CurrentPosition != SquareToAttack) {
+            int OffsetX = int(CurrentPosition.x) - int(SquareToAttack.x);
+            int OffsetY = int(CurrentPosition.y) - int(SquareToAttack.y);
+            sf::Vector2u TempCoordsToMove = SquareToAttack;
+            if ((OffsetX == 0) || (OffsetY == 0)) {
+                if (OffsetX != 0) {
+                    if (OffsetX > 0) {
+                        MoveVector.x = -1;
+                    } else {
+                        MoveVector.x = 1;
+                    }
+                    TempCoordsToMove.x -= MoveVector.x;
+                }
+                if (OffsetY != 0) {
+                    if (OffsetY > 0) {
+                        MoveVector.y = -1;
+                    } else {
+                        MoveVector.y = 1;
+                    }
+                    TempCoordsToMove.y -= MoveVector.y;
+                }
+                while (CurrentPosition != TempCoordsToMove) {
+                    CurrentPosition.x += MoveVector.x;
+                    CurrentPosition.y += MoveVector.y;
+                    if ((*ChessBoardPtr->GetPeaceMapPtr()->GetMapPtr())[CurrentPosition.y][CurrentPosition.x] !=
+                        nullptr) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
     return false;
 }

@@ -22,7 +22,9 @@ public:
     ~Queen();
    // void Destroy() override;
     bool IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove) override;
-    bool IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack, sf::Vector2u BoardSize) override;
+    bool IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack) override;
+    bool IsCanAttackStraight(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack);
+    bool IsCanAttackCross(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack);
 };
 
 #endif //UNTITLED1_QUEEN_H

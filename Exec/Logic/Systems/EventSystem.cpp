@@ -17,7 +17,7 @@ void EventSystem(GameWindow* Wnd){
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
             ChessPeace* ClickedPeace = GetClickedPeace(Wnd);
             if(ClickedPeace != nullptr) {
-                sf::Vector2f PrevCoordinates = ClickedPeace->GetPeaceCoordinates();
+                sf::Vector2f PrevPeaceCoordinates = ClickedPeace->GetPeaceCoordinates();
                 PeaceDragAndDrop(Wnd, ClickedPeace);
                 sf::Vector2u TileSize = Wnd->GetBoardPtr()->GetTileMapPtr()->GetTileSize();
                 bool IsPosChanged = IsPeacePositionChanged(ClickedPeace->GetBoardCoordinates(),ClickedPeace->GetPeaceCoordinates(), TileSize);
@@ -29,9 +29,7 @@ void EventSystem(GameWindow* Wnd){
                     CurrentSpritePosition.y += 40;
                     NewTilePosition.x = uint32_t(CurrentSpritePosition.x) / TileSize.x;
                     NewTilePosition.y = uint32_t(CurrentSpritePosition.y) / TileSize.y;
-                    if (!Wnd->GetBoardPtr()->PlayerMove(ClickedPeace, NewTilePosition)) {
-                        ClickedPeace->SetPeaceCoordinates(PrevCoordinates);
-                    }
+                    Wnd->GetBoardPtr()->PlayerMove(ClickedPeace, NewTilePosition,PrevPeaceCoordinates);
                 }
             }
         }

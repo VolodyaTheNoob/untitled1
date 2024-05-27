@@ -24,7 +24,6 @@ Knight::Knight(std::string Name, std::string Type, std::string Team, sf::Sprite 
 
 bool Knight::IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove){
     if(!IsKingThere(ChessBoardPtr,CoordinatesToMove) && !IsAllieThere(ChessBoardPtr,CoordinatesToMove)) {
-        std::cout << 1;
         if (CoordinatesToMove.x < ChessBoardPtr->GetTileMapPtr()->GetSize().x &&
             CoordinatesToMove.y < ChessBoardPtr->GetTileMapPtr()->GetSize().y) {
             sf::Vector2u OwnCoordinates = this->GetBoardCoordinates();
@@ -40,9 +39,17 @@ bool Knight::IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesT
     return false;
 }
 
-bool Knight::IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack, sf::Vector2u BoardSize){
-    if(IsCanMoveThere(ChessBoardPtr,SquareToAttack)){
-        return true;
+bool Knight::IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack){
+    if (SquareToAttack.x < ChessBoardPtr->GetTileMapPtr()->GetSize().x &&
+                    SquareToAttack.y < ChessBoardPtr->GetTileMapPtr()->GetSize().y) {
+        sf::Vector2u OwnCoordinates = this->GetBoardCoordinates();
+        int OffsetX = abs(int(OwnCoordinates.x) - int(SquareToAttack.x));
+        int OffsetY = abs(int(OwnCoordinates.y) - int(SquareToAttack.y));
+        if ((OffsetX == 1 || OffsetX == 2) && (OffsetY == 1 || OffsetY == 2)) {
+            if (abs(OffsetX - OffsetY) == 1) {
+                return true;
+            }
+        }
     }
     return false;
 }

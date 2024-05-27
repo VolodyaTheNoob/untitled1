@@ -13,12 +13,15 @@ bool Pawn::IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToM
         if (abs(CurrentPos.y - CoordinatesToMove.y) < 3) {
             if (abs(CurrentPos.x - CoordinatesToMove.x) < 2) {
                 if (abs(CurrentPos.y - CoordinatesToMove.y) == 1) {
-                    if(abs(CurrentPos.x - CoordinatesToMove.x) == 1){
-                        if (IsEnemyThere(ChessBoardPtr, CoordinatesToMove) && (!IsKingThere(ChessBoardPtr,CoordinatesToMove))) {
-                            this->DestroyEnemy(ChessBoardPtr,CoordinatesToMove);
-                            this->SetAlreadyMoved(true);
-                            return true;
+                    if(abs(CurrentPos.x - CoordinatesToMove.x) == 1) {
+                        if (!IsTileEmpty(ChessBoardPtr, CoordinatesToMove)) {
+                            if(!IsKingThere(ChessBoardPtr,CoordinatesToMove)) {
+                                if(IsEnemyThere(ChessBoardPtr,CoordinatesToMove)){
+                                this->SetAlreadyMoved(true);
+                                return true;
+                            }
                         }
+                    }
                     }else{
                         if (IsTileEmpty(ChessBoardPtr,CoordinatesToMove)) {
                             this->SetAlreadyMoved(true);
@@ -42,8 +45,8 @@ bool Pawn::IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToM
     }
     return false;
 }
-bool Pawn::IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack, sf::Vector2u BoardSize){
-    if(SquareToAttack.x >= BoardSize.x || SquareToAttack.y >= BoardSize.y){
+bool Pawn::IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack){
+    if(SquareToAttack.x >= ChessBoardPtr->GetSize().x || SquareToAttack.y >= ChessBoardPtr->GetSize().y){
         return false;
     }
     sf::Vector2u AttackerCoordinates = this->GetBoardCoordinates();

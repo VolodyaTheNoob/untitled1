@@ -25,7 +25,7 @@ public:
     ChessBoard();
     ChessBoard(bool IsFlipped,std::string CurrentPlayerMove, TileMap* TileMapPtr, PeaceMap* PeaceMapPtr, sf::Vector2u BoardSize);
     ~ChessBoard();
-    bool PlayerMove(ChessPeace* MovedPeace, sf::Vector2u NewPeacePosition);
+    bool PlayerMove(ChessPeace* MovedPeace, sf::Vector2u NewPeaceBoardPosition, sf::Vector2f PrevPeacePosition);
     TileMap* GetTileMapPtr();
     PeaceMap* GetPeaceMapPtr();
     sf::Vector2u GetSize();

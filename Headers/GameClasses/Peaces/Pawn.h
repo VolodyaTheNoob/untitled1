@@ -22,7 +22,7 @@ public:
     ~Pawn();
   //  void Destroy() override;
     bool IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove) override;
-    bool IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack, sf::Vector2u BoardSize) override;
+    bool IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack) override;
     void SetAlreadyMoved(bool NewState);
     bool IsAlreadyMove();
 };

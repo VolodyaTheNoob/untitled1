@@ -6,14 +6,11 @@
 King::King() = default;
 King::~King() = default;
 
-bool King::Move(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove, sf::Vector2f PeaceCoordinatesToMove){
-    if(this->IsPeaceTurn(ChessBoardPtr))
-    {
-        if (this->IsCanMoveThere(ChessBoardPtr, CoordinatesToMove)) {
-            //Need check if is tile attacked
-            //IsTileAttacked
-            return true;
-        }
+bool King::Move(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove){
+    if (this->IsCanMoveThere(ChessBoardPtr, CoordinatesToMove)) {
+        //Need check if is tile attacked
+        //IsTileAttacked
+        return true;
     }
     return false;
 }
@@ -47,9 +44,14 @@ bool King::IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToM
     return false;
 }
 
-bool King::IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack, sf::Vector2u BoardSize){
-    if(IsCanMoveThere(ChessBoardPtr,SquareToAttack)){
-        return true;
+bool King::IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack){
+    sf::Vector2u OwnCoordinates = this->GetBoardCoordinates();
+    if(OwnCoordinates != SquareToAttack){
+        int32_t OffsetX = abs(int(OwnCoordinates.x) - int(SquareToAttack.x));
+        int32_t OffsetY = abs(int(OwnCoordinates.y) - int(SquareToAttack.y));
+        if(OffsetX < 2 && OffsetY < 2){
+            return true;
+        }
     }
     return false;
 }
