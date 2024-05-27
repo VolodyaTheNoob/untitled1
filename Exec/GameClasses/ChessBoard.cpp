@@ -27,21 +27,31 @@ bool ChessBoard::PlayerMove(ChessPeace* MovedPeace, sf::Vector2u NewPeaceBoardPo
      * I guess we can just bruteforce every peace correct move - its 64 x 64 * 16 - a lot, but we can skip this, and just players decide if game over
      * Because I don't know how many time it will take to bruteforce this count of moves
      */
+    sf::Vector2f NewPeacePosition = MovedPeace->GetPeaceCoordinates();
+    sf::Vector2u PrevPeaceBoardPosition = MovedPeace->GetBoardCoordinates();
     if(MovedPeace->GetTeam() == this->CurrentPlayerMove) {
         if (MovedPeace->IsCanMoveThere(this, NewPeaceBoardPosition)) {
-            sf::Vector2f NewPeacePosition = MovedPeace->GetPeaceCoordinates();
             /*If move correct - we create copy of CurrentPeaceMap;
              * We move peace and calculate - is King attacked now
              * if Counters of king attacker not equal Zero - we don't pass move
              * Also in future we should add extra checks but its in future
              */
             //check if king checked after move if not pass
-            this->GetPeaceMapPtr()->MovePeace(MovedPeace, NewPeaceBoardPosition, NewPeacePosition);
-            this->NextPlayer();
-            return true;
+            this->GetPeaceMapPtr()->MovePeace(MovedPeace,NewPeaceBoardPosition,NewPeacePosition);
+
+            if(!IsOwnKingChecked()) {
+
+                if (!MovedPeace->IsKingThere(this, NewPeaceBoardPosition)) {
+                    if (MovedPeace->IsEnemyThere(this, NewPeaceBoardPosition)) {
+                        this->GetPeaceMapPtr()->DestroyPeace(NewPeaceBoardPosition);
+                    }
+                    this->NextPlayer();
+                    return true;
+                }
+            }
         }
     }
-    MovedPeace->SetPeaceCoordinates(PrevPeacePosition);
+    this->GetPeaceMapPtr()->MovePeace(MovedPeace,PrevPeaceBoardPosition,PrevPeacePosition);
     return false;
 }
 TileMap* ChessBoard::GetTileMapPtr(){
@@ -65,4 +75,37 @@ void ChessBoard::NextPlayer(){
     }else{
         this->CurrentPlayerMove = "White";
     }
+}
+
+std::string ChessBoard::GetEnemyTeam(){
+    if(this->CurrentPlayerMove == "White"){
+        return "Black";
+    }
+    return "White";
+}
+
+sf::Vector2u ChessBoard::GetOwnKingCoordinates(){
+    return *this->GetPeaceMapPtr()->GetPeaceBoardCoordinates(this->GetCurrentPlayerMove(),"King");
+}
+
+sf::Vector2u ChessBoard::GetEnemyKingCoordinates(){
+    return *this->GetPeaceMapPtr()->GetPeaceBoardCoordinates(this->GetEnemyTeam(),"King");
+}
+
+bool ChessBoard::IsOwnKingChecked(){
+    sf::Vector2u OwnKingCoordinates = this->GetOwnKingCoordinates();
+    std::string EnemyTeam = this->GetEnemyTeam();
+    for(unsigned int y = 0; y < this->Size.y; y++){
+        for(unsigned int x = 0; x < this->Size.x; x++) {
+            if((*this->GetPeaceMapPtr()->GetMapPtr())[y][x] != nullptr){
+                if((*this->GetPeaceMapPtr()->GetMapPtr())[y][x]->GetTeam() == EnemyTeam){
+                    if((*this->GetPeaceMapPtr()->GetMapPtr())[y][x]->IsAttackingSquare(this,OwnKingCoordinates)){
+                        std::cout << "Checked by " << (*this->GetPeaceMapPtr()->GetMapPtr())[y][x]->GetType() << "\n";
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+    return false;
 }

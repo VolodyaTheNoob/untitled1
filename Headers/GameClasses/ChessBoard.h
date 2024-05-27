@@ -32,6 +32,10 @@ public:
     std::string GetCurrentPlayerMove();
     bool IsViewFlipped();
     void NextPlayer();
+    std::string GetEnemyTeam();
+    sf::Vector2u GetOwnKingCoordinates();
+    sf::Vector2u GetEnemyKingCoordinates();
+    bool IsOwnKingChecked();
 };
 
 #endif //UNTITLED1_CHESSBOARD_H

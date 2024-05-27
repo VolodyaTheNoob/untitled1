@@ -121,10 +121,10 @@ bool Queen::IsCanMoveCross(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesTo
 }
 
 bool Queen::IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack){
-    if(this->IsCanAttackCross(ChessBoardPtr,SquareToAttack)){
+    if(this->IsCanAttackStraight(ChessBoardPtr,SquareToAttack)){
         return true;
     }
-    if(this->IsCanAttackStraight(ChessBoardPtr,SquareToAttack)){
+    if(this->IsCanAttackCross(ChessBoardPtr,SquareToAttack)){
         return true;
     }
     return false;
@@ -169,14 +169,14 @@ bool Queen::IsCanAttackStraight(ChessBoard* ChessBoardPtr, sf::Vector2u Coordina
     return false;
 }
 
-bool Queen::IsCanAttackCross(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove){
-    if(this->GetBoardCoordinates() != CoordinatesToMove){
-        int OffsetX = abs(int(this->GetBoardCoordinates().x) - int(CoordinatesToMove.x));
-        int OffsetY = abs(int(this->GetBoardCoordinates().y) - int(CoordinatesToMove.y));
+bool Queen::IsCanAttackCross(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack){
+    if(this->GetBoardCoordinates() != SquareToAttack){
+        int OffsetX = abs(int(this->GetBoardCoordinates().x) - int(SquareToAttack.x));
+        int OffsetY = abs(int(this->GetBoardCoordinates().y) - int(SquareToAttack.y));
         if(OffsetX == OffsetY){
             sf::Vector2i MoveVector;
-            OffsetX = int(this->GetBoardCoordinates().x) - int(CoordinatesToMove.x);
-            OffsetY = int(this->GetBoardCoordinates().y) - int(CoordinatesToMove.y);
+            OffsetX = int(this->GetBoardCoordinates().x) - int(SquareToAttack.x);
+            OffsetY = int(this->GetBoardCoordinates().y) - int(SquareToAttack.y);
             if(OffsetX > 0){
                 MoveVector.x = -1;
             }else{
@@ -187,7 +187,7 @@ bool Queen::IsCanAttackCross(ChessBoard* ChessBoardPtr, sf::Vector2u Coordinates
             }else{
                 MoveVector.y = 1;
             }
-            sf::Vector2u TempCoordinatesToMove = CoordinatesToMove;
+            sf::Vector2u TempCoordinatesToMove = SquareToAttack;
             TempCoordinatesToMove.x += MoveVector.x;
             TempCoordinatesToMove.y += MoveVector.y;
             sf::Vector2u CurrentPosition = TempCoordinatesToMove;

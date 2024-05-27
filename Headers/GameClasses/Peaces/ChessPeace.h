@@ -42,7 +42,7 @@ public:
     bool IsTileEmpty(ChessBoard* ChessBoardPtr,sf::Vector2u CoordinatesToMove);
     bool IsKingThere(ChessBoard* ChessBoardPtr,sf::Vector2u CoordinatesToMove);
     bool IsPeaceTurn(ChessBoard* ChessBoardPtr);
-    virtual void* CopySelf();
+    virtual ChessPeace* CopySelf();
     virtual bool IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack);
     virtual bool IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove);
 };

@@ -111,8 +111,8 @@ bool ChessPeace::IsPeaceTurn(ChessBoard* ChessBoardPtr){
     }
         return false;
 }
-void* ChessPeace::CopySelf(){
-    return this;
+ChessPeace* ChessPeace::CopySelf(){
+    return new ChessPeace(this->GetName(), this->GetType(),this->GetTeam(),this->GetSprite(),this->GetBoardCoordinates(),this->GetPeaceCoordinates());
 }
 bool ChessPeace::IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack){
     return true;

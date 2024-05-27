@@ -22,16 +22,44 @@ void PeaceMap::AddPeace(ChessPeace* PeaceToAdd, sf::Vector2u BoardCoordinates){
 }
 void PeaceMap::MovePeace(ChessPeace* PeaceToMove, sf::Vector2u BoardCoordinates,sf::Vector2f NewPeacePosition){
     sf::Vector2u PeaceToMoveCoordinates = PeaceToMove->GetBoardCoordinates();
-    if((*this->Map)[BoardCoordinates.y][BoardCoordinates.x] != nullptr){
-        (*this->Map)[BoardCoordinates.y][BoardCoordinates.x]->Destroy();
-        (*this->Map)[BoardCoordinates.y][BoardCoordinates.x] = nullptr;
+    if((*this->GetMapPtr())[BoardCoordinates.y][BoardCoordinates.x] != nullptr){
+        (*this->GetMapPtr())[BoardCoordinates.y][BoardCoordinates.x] = nullptr;
     }
-    (*this->Map)[BoardCoordinates.y][BoardCoordinates.x] = PeaceToMove;
-    (*this->Map)[PeaceToMoveCoordinates.y][PeaceToMoveCoordinates.x] = nullptr;
-    (*this->Map)[BoardCoordinates.y][BoardCoordinates.x]->SetBoardCoordinates(BoardCoordinates);
-    (*this->Map)[BoardCoordinates.y][BoardCoordinates.x]->SetPeaceCoordinates(NewPeacePosition);
+    (*this->GetMapPtr())[PeaceToMoveCoordinates.y][PeaceToMoveCoordinates.x] = nullptr;
+    (*this->GetMapPtr())[BoardCoordinates.y][BoardCoordinates.x] = PeaceToMove;
+    (*this->GetMapPtr())[BoardCoordinates.y][BoardCoordinates.x]->SetBoardCoordinates(BoardCoordinates);
+    (*this->GetMapPtr())[BoardCoordinates.y][BoardCoordinates.x]->SetPeaceCoordinates(NewPeacePosition);
 }
 
 std::vector<std::vector<ChessPeace*>>* PeaceMap::GetMapPtr(){
     return this->Map;
+}
+
+sf::Vector2u* PeaceMap::GetPeaceBoardCoordinates(std::string Team, std::string Type){
+    //I will use it now only for king - but in other cases we should return array
+    sf::Vector2u* PeaceBoardCoordinates = nullptr;
+    bool Founded = false;
+    for(unsigned int y = 0; y < this->Size.y && !Founded;y++){
+        for(unsigned int x = 0; x < this->Size.x && !Founded;x++){
+            if((*this->GetMapPtr())[y][x] != nullptr){
+                if((*this->GetMapPtr())[y][x]->GetType() == Type){
+                    if((*this->GetMapPtr())[y][x]->GetTeam() == Team){
+                        if(PeaceBoardCoordinates == nullptr){
+                            PeaceBoardCoordinates = new sf::Vector2u();
+                        }
+                        *PeaceBoardCoordinates = (*this->GetMapPtr())[y][x]->GetBoardCoordinates();
+                        Founded = true;
+                    }
+                }
+            }
+        }
+    }
+    return PeaceBoardCoordinates;
+}
+
+void PeaceMap::DestroyPeace(sf::Vector2u PeaceToDestroyCoordinates){
+    if((*this->GetMapPtr())[PeaceToDestroyCoordinates.y][PeaceToDestroyCoordinates.x] != nullptr){
+        (*this->GetMapPtr())[PeaceToDestroyCoordinates.y][PeaceToDestroyCoordinates.x]->Destroy();
+        (*this->GetMapPtr())[PeaceToDestroyCoordinates.y][PeaceToDestroyCoordinates.x] = nullptr;
+    }
 }

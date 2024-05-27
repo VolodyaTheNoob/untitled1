@@ -25,6 +25,8 @@ public:
     void MovePeace(ChessPeace* PeaceToMove, sf::Vector2u BoardCoordinates,sf::Vector2f NewPeacePosition);
 
     std::vector<std::vector<ChessPeace*>>* GetMapPtr();
+    sf::Vector2u* GetPeaceBoardCoordinates(std::string Team, std::string Type);
+    void DestroyPeace(sf::Vector2u PeaceToDestroyCoordinates);
 };
 
 #endif //UNTITLED1_PEACEMAP_H
