@@ -177,20 +177,22 @@ bool Queen::IsCanAttackCross(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAtt
             sf::Vector2i MoveVector;
             OffsetX = int(this->GetBoardCoordinates().x) - int(SquareToAttack.x);
             OffsetY = int(this->GetBoardCoordinates().y) - int(SquareToAttack.y);
+            sf::Vector2u CurrentPosition = this->GetBoardCoordinates();
+            sf::Vector2u TempCoordinatesToMove = SquareToAttack;
             if(OffsetX > 0){
                 MoveVector.x = -1;
+                TempCoordinatesToMove.x += 1;
             }else{
                 MoveVector.x = 1;
+                TempCoordinatesToMove.x -=1;
             }
             if(OffsetY > 0){
                 MoveVector.y = -1;
+                TempCoordinatesToMove.y += 1;
             }else{
-                MoveVector.y = 1;
+                MoveVector.y = -1;
+                TempCoordinatesToMove.y -= 1;
             }
-            sf::Vector2u TempCoordinatesToMove = SquareToAttack;
-            TempCoordinatesToMove.x += MoveVector.x;
-            TempCoordinatesToMove.y += MoveVector.y;
-            sf::Vector2u CurrentPosition = TempCoordinatesToMove;
             while(CurrentPosition != TempCoordinatesToMove){
                 CurrentPosition.x += MoveVector.x;
                 CurrentPosition.y += MoveVector.y;

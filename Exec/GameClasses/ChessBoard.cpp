@@ -38,9 +38,7 @@ bool ChessBoard::PlayerMove(ChessPeace* MovedPeace, sf::Vector2u NewPeaceBoardPo
              */
             //check if king checked after move if not pass
             this->GetPeaceMapPtr()->MovePeace(MovedPeace,NewPeaceBoardPosition,NewPeacePosition);
-
             if(!IsOwnKingChecked()) {
-
                 if (!MovedPeace->IsKingThere(this, NewPeaceBoardPosition)) {
                     if (MovedPeace->IsEnemyThere(this, NewPeaceBoardPosition)) {
                         this->GetPeaceMapPtr()->DestroyPeace(NewPeaceBoardPosition);
