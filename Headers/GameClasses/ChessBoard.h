@@ -13,13 +13,20 @@
 class PeaceMap;
 class TileMap;
 class ChessPeace;
-
+/*
+ * Class used to assembly chess game classes and add logic to them
+ */
 class ChessBoard{
 private:
+    //If board is flipped
     bool IsFlipped = false;
+    //Contain current player id
     std::string CurrentPlayerMove = "White";
+    //Contain chess tile map = representation of our board
     TileMap* Tiles;
+    //Contain game peaces - if position is empty should use nullptr
     PeaceMap* Peaces;
+    //Tile map size
     sf::Vector2u Size;
 public:
     ChessBoard();

@@ -2,14 +2,8 @@
 // Created by SystemX on 25.05.2024.
 //
 #include "Headers/GameClasses/Peaces/Rook.h"
-
+//Constructors
 Rook::Rook() = default;
-Rook::~Rook() = default;
-/*
-void Rook::Destroy(){
-    delete this;
-}
-*/
 Rook::Rook(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
            sf::Vector2f SpriteCoordinates) : ChessPeace(Name, Type, Team, Sprite, Coordinates, SpriteCoordinates) {
 
@@ -19,6 +13,9 @@ Rook::Rook(std::string Name, std::string Type, std::string Team, sf::Sprite *Spr
            sf::Vector2u BoardSize) : ChessPeace(Name, Type, Team, Sprite, Coordinates, ChessTileSize) {
 
 }
+//Destructors
+Rook::~Rook() = default;
+//Functions
 bool Rook::IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove){
     if(!IsKingThere(ChessBoardPtr,CoordinatesToMove) && !IsAllieThere(ChessBoardPtr,CoordinatesToMove)) {
         sf::Vector2u CurrentPosition = this->GetBoardCoordinates();

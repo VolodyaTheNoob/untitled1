@@ -2,26 +2,15 @@
 // Created by SystemX on 25.05.2024.
 //
 #include "Headers/GameClasses/Peaces/Knight.h"
-
+//Constructors
 Knight::Knight() = default;
+Knight::Knight(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
+               sf::Vector2f SpriteCoordinates) : ChessPeace(Name, Type, Team, Sprite, Coordinates, SpriteCoordinates) {}
+Knight::Knight(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
+               sf::Vector2u BoardSize) : ChessPeace(Name, Type, Team, Sprite, Coordinates, ChessTileSize) {}
+//Destructors
 Knight::~Knight() = default;
-
-/*
-void Knight::Destroy(){
-    delete this;
-}
-*/
-
-Knight::Knight(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
-               sf::Vector2f SpriteCoordinates) : ChessPeace(Name, Type, Team, Sprite, Coordinates, SpriteCoordinates) {
-
-}
-
-Knight::Knight(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
-               sf::Vector2u BoardSize) : ChessPeace(Name, Type, Team, Sprite, Coordinates, ChessTileSize) {
-
-}
-
+//Functions
 bool Knight::IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove){
     if(!IsKingThere(ChessBoardPtr,CoordinatesToMove) && !IsAllieThere(ChessBoardPtr,CoordinatesToMove)) {
         if (CoordinatesToMove.x < ChessBoardPtr->GetTileMapPtr()->GetSize().x &&
@@ -38,7 +27,6 @@ bool Knight::IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesT
     }
     return false;
 }
-
 bool Knight::IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack){
     if (SquareToAttack.x < ChessBoardPtr->GetTileMapPtr()->GetSize().x &&
                     SquareToAttack.y < ChessBoardPtr->GetTileMapPtr()->GetSize().y) {
