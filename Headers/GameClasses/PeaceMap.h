@@ -17,7 +17,9 @@ class ChessPeace;
  */
 class PeaceMap{
 private:
+    //MapSize
     sf::Vector2u Size;
+    //if position is empty ChessPeace should be nullptr
     std::vector<std::vector<ChessPeace*>>*Map;
 public:
     PeaceMap();

@@ -5,14 +5,12 @@
 #include "Headers/GameClasses/ChessBoard.h"
 //Constructors
 ChessBoard::ChessBoard(){
-    this->IsFlipped = false;
     this->CurrentPlayerMove = "White";
     this->Tiles = nullptr;
     this->Peaces = nullptr;
     this->Size = sf::Vector2u(0,0);
 }
-ChessBoard::ChessBoard(bool IsFlipped,std::string CurrentPlayerMove, TileMap* TileMapPtr, PeaceMap* PeaceMapPtr, sf::Vector2u BoardSize){
-    this->IsFlipped = IsFlipped;
+ChessBoard::ChessBoard(std::string CurrentPlayerMove, TileMap* TileMapPtr, PeaceMap* PeaceMapPtr, sf::Vector2u BoardSize){
     this->CurrentPlayerMove = CurrentPlayerMove;
     this->Tiles = TileMapPtr;
     this->Peaces = PeaceMapPtr;
@@ -71,9 +69,6 @@ sf::Vector2u ChessBoard::GetSize(){
 }
 std::string ChessBoard::GetCurrentPlayerMove(){
     return this->CurrentPlayerMove;
-}
-bool ChessBoard::IsViewFlipped(){
-    return this->IsFlipped;
 }
 void ChessBoard::NextPlayer(){
     if(this->GetCurrentPlayerMove() == "White"){
