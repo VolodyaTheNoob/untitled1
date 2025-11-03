@@ -13,30 +13,38 @@
 class PeaceMap;
 class TileMap;
 class ChessPeace;
-
+/*
+ * Class used to assembly chess game classes and add logic to them
+ */
 class ChessBoard{
 private:
-    bool IsFlipped = false;
+    /*
+     * TileMapSize and PeaceMap sizes should be equal - all logic based on this
+     */
+    //Contain current player id
     std::string CurrentPlayerMove = "White";
+    //Contain chess tile map = representation of our board
     TileMap* Tiles;
+    //Contain game peaces
     PeaceMap* Peaces;
+    //TileMap size
     sf::Vector2u Size;
 public:
     ChessBoard();
-    ChessBoard(bool IsFlipped,std::string CurrentPlayerMove, TileMap* TileMapPtr, PeaceMap* PeaceMapPtr, sf::Vector2u BoardSize);
+    ChessBoard(std::string CurrentPlayerMove, TileMap* TileMapPtr, PeaceMap* PeaceMapPtr, sf::Vector2u BoardSize);
     ~ChessBoard();
     bool PlayerMove(ChessPeace* MovedPeace, sf::Vector2u NewPeaceBoardPosition, sf::Vector2f PrevPeacePosition);
     TileMap* GetTileMapPtr();
     PeaceMap* GetPeaceMapPtr();
     sf::Vector2u GetSize();
     std::string GetCurrentPlayerMove();
-    bool IsViewFlipped();
     void NextPlayer();
     std::string GetEnemyTeam();
     sf::Vector2u GetOwnKingCoordinates();
     sf::Vector2u GetEnemyKingCoordinates();
     bool IsOwnKingChecked();
     bool IsOwnKingCheckmated();
+    bool IsTileAttacked(sf::Vector2u NewPeaceBoardPosition);
 };
 
 #endif //UNTITLED1_CHESSBOARD_H

@@ -9,7 +9,7 @@ int main() {
     CreateChessBoard(tileMap,GlobalTextureManager);
     PeaceMap *peaceMap = new PeaceMap(ChessBoardSize);
     CreateChessPeaces(peaceMap,GlobalTextureManager);
-    ChessBoard *chessBoard = new ChessBoard(0,"White",tileMap,peaceMap,ChessBoardSize);
+    ChessBoard *chessBoard = new ChessBoard("White",tileMap,peaceMap,ChessBoardSize);
     //Creating our game Window
     GameWindow *gameWindow = new GameWindow(chessBoard);
     gameWindow->SetRenderSystem(RenderSystem);

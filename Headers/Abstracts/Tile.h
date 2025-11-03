@@ -4,7 +4,9 @@
 
 #ifndef UNTITLED1_TILE_H
 #define UNTITLED1_TILE_H
-
+/*
+ * Abstract class used to create game tiles - can be used as game class
+ */
 #include "Headers/Abstracts/Entity.h"
 
 class Tile:Entity{

@@ -3,10 +3,25 @@
 //
 
 #include "Headers/GameClasses/Peaces/Pawn.h"
-
+//Constructors
 Pawn::Pawn() = default;
+Pawn::Pawn(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
+           sf::Vector2f SpriteCoordinates) : ChessPeace(Name, Type, Team, Sprite, Coordinates, SpriteCoordinates) {
+    this->MoveVectorY = 1;
+    if(this->GetTeam() == "White"){
+        MoveVectorY *= -1;
+    }
+}
+Pawn::Pawn(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
+           sf::Vector2u BoardSize) : ChessPeace(Name, Type, Team, Sprite, Coordinates, ChessTileSize) {
+    this->MoveVectorY = 1;
+    if(this->GetTeam() == "White"){
+        MoveVectorY *= -1;
+    }
+}
+//Destructors
 Pawn::~Pawn() = default;
-
+//Functions
 bool Pawn::IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove) {
     sf::Vector2u CurrentPos = this->GetBoardCoordinates();
     if (CoordinatesToMove.y - CurrentPos.y == (abs(CoordinatesToMove.y - CurrentPos.y) * this->MoveVectorY)) {
@@ -66,21 +81,6 @@ bool Pawn::IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAtt
     return false;
 }
 
-Pawn::Pawn(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
-           sf::Vector2f SpriteCoordinates) : ChessPeace(Name, Type, Team, Sprite, Coordinates, SpriteCoordinates) {
-    this->MoveVectorY = 1;
-    if(this->GetTeam() == "White"){
-        MoveVectorY *= -1;
-    }
-}
-
-Pawn::Pawn(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
-           sf::Vector2u BoardSize) : ChessPeace(Name, Type, Team, Sprite, Coordinates, ChessTileSize) {
-    this->MoveVectorY = 1;
-    if(this->GetTeam() == "White"){
-        MoveVectorY *= -1;
-    }
-}
 void Pawn::SetAlreadyMoved(bool NewState){
     this->AlreadyMoved = NewState;
 }

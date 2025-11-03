@@ -10,7 +10,7 @@
 #include "Headers/Constants.h"
 #include "Headers/Managers/TextureManager.h"
 /*
- * Abstract class used to build own Window classes
+ * Abstract class used to build own Window classes, can be used as game class
  */
 class GameWindow;
 class Window;

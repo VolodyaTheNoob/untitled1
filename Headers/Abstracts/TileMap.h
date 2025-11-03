@@ -8,7 +8,7 @@
 #include "Headers/Abstracts/Tile.h"
 
 /*
- * Abstract class used to make Manager for tile/tile movement
+ * Abstract class used to make Manager for tile/tile movement, also can be used as gane class
  */
 class TileMap{
     friend class ChessBoard;
@@ -16,7 +16,9 @@ class TileMap{
 private:
     static inline uint32_t CountOfTiles{};
     std::vector<std::vector<Tile*>> *Map = nullptr;
+    //Tile map size
     sf::Vector2u Size;
+    //Every tile size
     sf::Vector2u TileSize;
 public:
     TileMap();

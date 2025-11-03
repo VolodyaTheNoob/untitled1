@@ -12,10 +12,14 @@
  */
 
 class ChessPeace;
-
+/*
+ * Class used to contain chess peaces
+ */
 class PeaceMap{
 private:
+    //MapSize
     sf::Vector2u Size;
+    //if position is empty ChessPeace should be nullptr
     std::vector<std::vector<ChessPeace*>>*Map;
 public:
     PeaceMap();
@@ -23,7 +27,6 @@ public:
     ~PeaceMap();
     void AddPeace(ChessPeace* PeaceToAdd, sf::Vector2u BoardCoordinates);
     void MovePeace(ChessPeace* PeaceToMove, sf::Vector2u BoardCoordinates,sf::Vector2f NewPeacePosition);
-
     std::vector<std::vector<ChessPeace*>>* GetMapPtr();
     sf::Vector2u* GetPeaceBoardCoordinates(std::string Team, std::string Type);
     void DestroyPeace(sf::Vector2u PeaceToDestroyCoordinates);

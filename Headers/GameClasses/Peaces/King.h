@@ -19,7 +19,6 @@ public:
     King(std::string Name,std::string Type,std::string Team, sf::Sprite* Sprite ,sf::Vector2u Coordinates, sf::Vector2u ChessTileSize);
     ~King();
     bool Move(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove) override;
-   // void Destroy() override;
     bool IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove) override;
     bool IsAttackingSquare(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAttack) override;
 };

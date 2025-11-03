@@ -3,23 +3,19 @@
 //
 #include "Headers/GameClasses/Peaces/Queen.h"
 
+//Constructors
 Queen::Queen() = default;
-Queen::~Queen() = default;
-
-/*
-void Queen::Destroy(){
-    delete this;
-}
-*/
 Queen::Queen(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
              sf::Vector2f SpriteCoordinates) : ChessPeace(Name, Type, Team, Sprite, Coordinates, SpriteCoordinates) {
 
 }
-
 Queen::Queen(std::string Name, std::string Type, std::string Team, sf::Sprite *Sprite, sf::Vector2u Coordinates,
              sf::Vector2u BoardSize) : ChessPeace(Name, Type, Team, Sprite, Coordinates, ChessTileSize) {
 
 }
+//Destructors
+Queen::~Queen() = default;
+//Functions
 bool Queen::IsCanMoveThere(ChessBoard* ChessBoardPtr, sf::Vector2u CoordinatesToMove){
     if(this->IsCanMoveStraight(ChessBoardPtr,CoordinatesToMove)){
         return true;
@@ -190,7 +186,7 @@ bool Queen::IsCanAttackCross(ChessBoard* ChessBoardPtr, sf::Vector2u SquareToAtt
                 MoveVector.y = -1;
                 TempCoordinatesToMove.y += 1;
             }else{
-                MoveVector.y = -1;
+                MoveVector.y = 1;
                 TempCoordinatesToMove.y -= 1;
             }
             while(CurrentPosition != TempCoordinatesToMove){

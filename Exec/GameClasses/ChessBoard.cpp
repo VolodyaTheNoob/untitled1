@@ -5,14 +5,12 @@
 #include "Headers/GameClasses/ChessBoard.h"
 //Constructors
 ChessBoard::ChessBoard(){
-    this->IsFlipped = false;
     this->CurrentPlayerMove = "White";
     this->Tiles = nullptr;
     this->Peaces = nullptr;
     this->Size = sf::Vector2u(0,0);
 }
-ChessBoard::ChessBoard(bool IsFlipped,std::string CurrentPlayerMove, TileMap* TileMapPtr, PeaceMap* PeaceMapPtr, sf::Vector2u BoardSize){
-    this->IsFlipped = IsFlipped;
+ChessBoard::ChessBoard(std::string CurrentPlayerMove, TileMap* TileMapPtr, PeaceMap* PeaceMapPtr, sf::Vector2u BoardSize){
     this->CurrentPlayerMove = CurrentPlayerMove;
     this->Tiles = TileMapPtr;
     this->Peaces = PeaceMapPtr;
@@ -21,7 +19,7 @@ ChessBoard::ChessBoard(bool IsFlipped,std::string CurrentPlayerMove, TileMap* Ti
 //Destructors
 ChessBoard::~ChessBoard() = default;
 //Functions
-bool ChessBoard::PlayerMove(ChessPeace* MovedPeace, sf::Vector2u NewPeaceBoardPosition, sf::Vector2f PrevPeacePosition){
+bool ChessBoard::PlayerMove(ChessPeace* MovedPeace, sf::Vector2u NewPeaceBoardPosition, sf::Vector2f PrevPeacePosition) {
     //check if king checkmated - if not pass
     /*
      * I guess we can just bruteforce every peace correct move - its 64 x 64 * 16 - a lot, but we can skip this, and just players decide if game over
@@ -29,26 +27,33 @@ bool ChessBoard::PlayerMove(ChessPeace* MovedPeace, sf::Vector2u NewPeaceBoardPo
      */
     sf::Vector2f NewPeacePosition = MovedPeace->GetPeaceCoordinates();
     sf::Vector2u PrevPeaceBoardPosition = MovedPeace->GetBoardCoordinates();
-    if(!this->IsOwnKingCheckmated()) {
-        if (MovedPeace->GetTeam() == this->CurrentPlayerMove) {
-            if (MovedPeace->IsCanMoveThere(this, NewPeaceBoardPosition)) {
-                /*If move correct - we create copy of CurrentPeaceMap;
-                 * We move peace and calculate - is King attacked now
-                 * if Counters of king attacker not equal Zero - we don't pass move
-                 * Also in future we should add extra checks but its in future
-                 */
-                //check if king checked after move if not pass
-                this->GetPeaceMapPtr()->MovePeace(MovedPeace, NewPeaceBoardPosition, NewPeacePosition);
-                if (!IsOwnKingChecked()) {
+    if (MovedPeace->GetTeam() == this->CurrentPlayerMove) {
+        if (MovedPeace->IsCanMoveThere(this, NewPeaceBoardPosition)) {
+            /*If move correct - we create copy of CurrentPeaceMap;
+             * We move peace and calculate - is King attacked now
+             * if Counters of king attacker not equal Zero - we don't pass move
+             * Also in future we should add extra checks but its in future
+             */
+            //check if king checked after move if not pass
+            this->GetPeaceMapPtr()->MovePeace(MovedPeace, NewPeaceBoardPosition, NewPeacePosition);
+            if (!IsOwnKingChecked()) {
+                if (MovedPeace->GetType() != "King") {
                     if (!MovedPeace->IsKingThere(this, NewPeaceBoardPosition)) {
                         this->NextPlayer();
                         return true;
                     }
+                } else {
+                    if (!this->IsTileAttacked(NewPeaceBoardPosition)) {
+                        this->NextPlayer();
+                        return true;
+                    }
+                }
+            }else{
+                if(this->IsOwnKingCheckmated()){
+                    std::cout << "Checkmated";
                 }
             }
         }
-    }else{
-        std::cout << "Checkmated" << "\n";
     }
     this->GetPeaceMapPtr()->MovePeace(MovedPeace, PrevPeaceBoardPosition, PrevPeacePosition);
     return false;
@@ -64,9 +69,6 @@ sf::Vector2u ChessBoard::GetSize(){
 }
 std::string ChessBoard::GetCurrentPlayerMove(){
     return this->CurrentPlayerMove;
-}
-bool ChessBoard::IsViewFlipped(){
-    return this->IsFlipped;
 }
 void ChessBoard::NextPlayer(){
     if(this->GetCurrentPlayerMove() == "White"){
@@ -139,4 +141,19 @@ bool ChessBoard::IsOwnKingCheckmated(){
         }
     }
     return true;
+}
+
+bool ChessBoard::IsTileAttacked(sf::Vector2u BoardPositionToCheck){
+    for(unsigned int y = 0; y < this->GetSize().y;y++){
+        for(unsigned int x = 0; x < this->GetSize().x;x++){
+            if((*this->GetPeaceMapPtr()->GetMapPtr())[y][x] != nullptr){
+                if((*this->GetPeaceMapPtr()->GetMapPtr())[y][x]->GetTeam() != this->GetCurrentPlayerMove()){
+                    if((*this->GetPeaceMapPtr()->GetMapPtr())[y][x]->IsAttackingSquare(this, BoardPositionToCheck)){
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+    return false;
 }
